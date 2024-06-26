@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:space_imoveis/componentes/advertiser_data_components/Comments/ratingSummary.dart';
 import 'package:space_imoveis/componentes/global_components/Recomended/recomended_slider.dart';
 import 'package:space_imoveis/componentes/global_components/app_bar.dart';
 import 'package:space_imoveis/componentes/global_components/drawer.dart';

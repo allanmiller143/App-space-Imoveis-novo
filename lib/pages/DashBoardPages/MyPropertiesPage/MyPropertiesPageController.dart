@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/global_components/load_widget.dart';
 import 'package:space_imoveis/componentes/global_components/snack_bar.dart';

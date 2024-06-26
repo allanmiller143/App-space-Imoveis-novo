@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:number_paginator/number_paginator.dart';
 import 'package:space_imoveis/componentes/advertiser_data_components/advertiser_grid/advertiser_gridController.dart';
 import 'package:space_imoveis/componentes/global_components/Grid/card.dart';
-import 'package:space_imoveis/componentes/global_components/Grid/gridController.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/loading_card.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 

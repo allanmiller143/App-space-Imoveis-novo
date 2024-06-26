@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/DashBoardComponents/Myproperties/edit.dart';
 import 'package:space_imoveis/componentes/global_components/my_button.dart';
-import 'package:space_imoveis/componentes/inser_property_components/horizontal_stepper.dart';
-import 'package:space_imoveis/componentes/inser_property_components/imageSelect.dart';
 import 'package:space_imoveis/componentes/inser_property_components/step_one.dart';
-import 'package:space_imoveis/componentes/inser_property_components/step_three.dart';
 import 'package:space_imoveis/componentes/inser_property_components/step_two.dart';
 import 'package:space_imoveis/pages/DashBoardPages/EditPropertyPage/EditPropertyPageController.dart';
 

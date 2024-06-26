@@ -4,8 +4,6 @@ import 'package:space_imoveis/componentes/allHighligthedProperties/allHighligthe
 import 'package:space_imoveis/componentes/global_components/Grid/grid.dart';
 import 'package:space_imoveis/componentes/global_components/app_bar.dart'; // Certifique-se de que este caminho está correto
 import 'package:space_imoveis/componentes/global_components/drawer.dart';
-import 'package:space_imoveis/componentes/global_components/home_banner_sliders.dart';
-import 'package:space_imoveis/componentes/global_components/home_carousel_slider/home_carousel_slider.dart';
 import 'package:space_imoveis/componentes/home/filterCards.dart';
 import 'package:space_imoveis/pages/AppPages/allHighligthedProperties/allHighligthedPropertiesController.dart';
 
