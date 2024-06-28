@@ -145,6 +145,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.6"
+  easy_infinite_pagination:
+    dependency: "direct main"
+    description:
+      name: easy_infinite_pagination
+      sha256: b3d0c12ae8163c56eb3f3e77834809be1537ed9169e0f6fb60657418b63d41ea
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
   equatable:
     dependency: transitive
     description:

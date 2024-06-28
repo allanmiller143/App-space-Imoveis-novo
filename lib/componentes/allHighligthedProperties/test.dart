@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
+import 'package:space_imoveis/pages/AppPages/allHighligthedProperties/allHighligthedPropertiesController.dart';
 
 class CustomRadioChoice extends StatelessWidget {
   final Map<String, String> choices;
   final ValueChanged<String> onChange;
+  final RxString item;
+
+
 
   CustomRadioChoice({
     required this.choices,
     required this.onChange,
+    required this.item
   });
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RadioChoiceController());
+
     MyGlobalController myGlobalController = Get.put(MyGlobalController());
 
     return Obx(() {
       return Row(
         children: choices.keys.map((key) {
-          bool isSelected = controller.state.value == key;
+          bool isSelected = item.value == key;
           return GestureDetector(
             onTap: () {
-              controller.state.value = key;
+              item.value = key;
               onChange(key);
             },
             child: Container(
@@ -47,7 +52,4 @@ class CustomRadioChoice extends StatelessWidget {
   }
 }
 
-class RadioChoiceController extends GetxController {
-  var state = ''.obs;
 
-}

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:space_imoveis/componentes/allHighligthedProperties/allHighligthedPropertiesFilter.dart';
-import 'package:space_imoveis/componentes/global_components/Grid/grid.dart';
+import 'package:space_imoveis/componentes/allHighligthedProperties/Grid/HighligthedPropertyGrid.dart';
+import 'package:space_imoveis/componentes/allHighligthedProperties/filterCards.dart';
 import 'package:space_imoveis/componentes/global_components/app_bar.dart'; // Certifique-se de que este caminho está correto
 import 'package:space_imoveis/componentes/global_components/drawer.dart';
-import 'package:space_imoveis/componentes/home/filterCards.dart';
 import 'package:space_imoveis/pages/AppPages/allHighligthedProperties/allHighligthedPropertiesController.dart';
 
 
@@ -22,12 +21,71 @@ class AllhighligthedpropertiesPage extends StatelessWidget {
           return Scaffold(
             backgroundColor: Color.fromARGB(255,255,255,255),
             appBar: AppBar(
+              iconTheme: IconThemeData(color: Colors.white), // Define o ícone do Drawer como branco
               backgroundColor: controller.myGlobalController.color,
               centerTitle: true,
-              title: MyAppBar(myGlobalController: controller.myGlobalController),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                      child: Center(
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.arrow_back_ios_new,
+                              size: 18,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                            onPressed: () {
+                              Get.back();
+                            },
+                          ),
+                        ),
+                      ),
+                    
+                  ),
+                  Text(
+                    'Imóveis em destaque',	
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                      child: Center(
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.share,
+                              size: 18,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                            onPressed: () {
+                              Get.back();
+                            },
+                          ),
+                        ),
+                      
+                    ),
+                  ),
+                ],
+              )
             ),
-            drawer: MyDrawer(myGlobalController: controller.myGlobalController),
-           
             body: FutureBuilder(
               future: controller.init(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -42,26 +100,11 @@ class AllhighligthedpropertiesPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
+                                //HomeBannerCarousel(),
                                 SizedBox(height: 10),
-                                ElevatedButton(
-                                    onPressed: () {
-                                    showModalBottomSheet(
-                                      context: context,
-                                      isScrollControlled: true,
-                                      
-                                      builder: (BuildContext context) {
-                                        return FractionallySizedBox(
-                                          widthFactor: 1,
-                                          child: CustomDrawer(),
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: Text('Open Drawer'),
-                                ),
-                                FiltersCards(),
+                                HighligthedFiltersCards(),
                                 SizedBox(height: 10),               
-                                PropertyGrid(title: 'Encontre o imovel ideal',),
+                                HighligthedPropertyGrid(title: 'Imóveis em destaque',),
                               ],
                             ),
                           ),

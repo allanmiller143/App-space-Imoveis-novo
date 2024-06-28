@@ -71,66 +71,114 @@ class PropertyLoadingCarousel extends StatelessWidget {
 
 class PropertyList extends StatelessWidget {
   final PropertyController controller = Get.put(PropertyController());
+
   @override
   Widget build(BuildContext context) {
-    return Obx(() =>
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(0),
-              child: Center(
-                child: Text(
-                  'Destaques',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+    return Obx(
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(0),
+            child: Center(
+              child: Text(
+                'Destaques',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            controller.isLoading.value ? 
-            PropertyLoadingCarousel() 
-            :
-            PropertyCarousel(properties: controller.properties, globalController: controller.myGlobalController),
-            SizedBox(height: 8),
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: (){
-                      Get.toNamed('all_highligthed_property');
-                    },
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(25,5,25,5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: const Color.fromARGB(255, 255, 255, 255),
-                        border: Border.all(width: 0.5)
+          ),
+          controller.isLoading.value
+              ? PropertyLoadingCarousel()
+              : controller.properties.isEmpty
+                  ? Center(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0,20,0,0),
+                            child: Text(
+                            'Ops!',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            Text(
+                              'Não foram encontrados imóveis.',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w300,
+                                color: const Color.fromARGB(255, 0, 0, 0),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Container(
+                              width: 50,
+                              height: 50,
+                              child: Image.asset('assets/imgs/logo.png', height: 300),
+                            )
+                        ],
                       ),
-                      child: Text('Ver mais', style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0),fontSize: 10),),
                     )
-                  ),
-                  SizedBox(width: 15), // Espaço entre os botões
-                  GestureDetector(
-                    onTap: (){
-                      Get.toNamed('insert_property');
-                    },
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(25,5,25,5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: controller.myGlobalController.color,
+                  : PropertyCarousel(
+                      properties: controller.properties,
+                      globalController: controller.myGlobalController,
+                    ),
+          SizedBox(height: 8),
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed('all_highligthed_property', arguments: ['']);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(25, 5, 25, 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      border: Border.all(width: 0.5),
+                    ),
+                    child: Text(
+                      'Ver mais',
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                        fontSize: 10,
                       ),
-                      child: Text('Anunciar', style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 10),),
-                    )
+                    ),
                   ),
-                ],
-              ),
-            )
-          ],
-        )
+                ),
+                SizedBox(width: 15), // Espaço entre os botões
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed('insert_property');
+                  },
+                  child: Container(
+                    padding: EdgeInsets.fromLTRB(25, 5, 25, 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: controller.myGlobalController.color,
+                    ),
+                    child: Text(
+                      'Anunciar',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class ManageTextField extends StatelessWidget {
   final String label;
-  final RxString controller;
+  final TextEditingController controller;
   final double width;
 
   ManageTextField({
@@ -37,8 +37,8 @@ class ManageTextField extends StatelessWidget {
             border: Border.all(color: Color.fromARGB(47, 0, 0, 0), width: 0.3),
           ),
           child: TextField(
-            controller: TextEditingController(text: controller.value),
-            onChanged: (value) => controller.value = value,
+            controller: controller,
+            onChanged: (value) => controller.text = value,
             decoration: InputDecoration(
               alignLabelWithHint: true,
               filled: true,

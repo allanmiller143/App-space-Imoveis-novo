@@ -13,17 +13,17 @@ class Networks extends StatelessWidget {
 
 
 
-
-
-
   googleSignIn(BuildContext context) async {
     try {
       var result = await signInWithGoogle();
+      print(result);
       var userData = {
           'name': result['auth'].user!.displayName,
           'email': result['auth'].user!.email,
           'phone': result['auth'].user!.phoneNumber,
       };
+
+      print(userData);
 
       var response = await get('find/${userData['email']}');
       if(response['status'] == 200 || response['status'] == 201){ // dar um find para ver se a conta ja existe, se sim, ent faz login
@@ -81,7 +81,7 @@ class Networks extends StatelessWidget {
         }
       }
     } catch (e) {
-      mySnackBar('Ocorreu um erro inesperado', false);
+      mySnackBar('Ocorreu um erro inesperado jnfgiofgoif', false);
     }
   }
 

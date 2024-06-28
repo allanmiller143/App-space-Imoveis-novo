@@ -140,13 +140,34 @@ class PropertyDetailCard1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                propertyData['property']['property_type'],
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    propertyData['property']['property_type'],
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "Preço negociável",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                      Icon(
+                        propertyData['property']['negotiable'] ? Icons.check_circle : Icons.check_circle,
+                        size: 18,
+                        color: propertyData['property']['negotiable'] ? Colors.green : Colors.grey,
+                      ),
+                    ],
+                  ),
+                ],
               ),
               SizedBox(height: 2),
               Text(
@@ -219,6 +240,33 @@ class PropertyDetailCard1 extends StatelessWidget {
                   ),
                 ),
               SizedBox(height: 8),
+              Text(
+                'Taxas extras',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
+                ),
+              ),
+              Text(
+                'IPTU: ${propertyData['property']['iptu'] == null ? 'R\$ 0,00' : 'R\$ ${controller.formatNumber(propertyData['property']['iptu'])}'}',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w300,
+                  color: Color.fromARGB(255, 85, 85, 85),
+                  fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
+                ),
+              ),
+              Text(
+                'Taxas extras: ${propertyData['property']['aditional_fees'] == null ? 'R\$ 0,00' : 'R\$ ${controller.formatNumber(propertyData['property']['aditional_fees'])}'}',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w300,
+                  color: Color.fromARGB(255, 85, 85, 85),
+                  fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
+                ),
+              ),
+              SizedBox(height: 8),              
               Text(
                 'Descrição',
                 style: TextStyle(

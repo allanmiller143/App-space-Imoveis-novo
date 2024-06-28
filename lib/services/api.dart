@@ -156,9 +156,7 @@ Future<Map<String, dynamic>> putFormData(String route, File file, String token, 
 }
 
 put(String route, Map<String, dynamic> data, {String? token}) async {
-  final url = Uri.parse('$URL$route');
-  print(url);
-  
+  final url = Uri.parse('$URL$route');  
   try {
     final headers = {
       'Content-Type': 'application/json',
