@@ -20,7 +20,7 @@ class CompleteSignUpPageBioController extends GetxController {
   }
 
   jumpStep(){
-    Get.toNamed('/home');
+    Get.offAllNamed('/home');
   }
 
 

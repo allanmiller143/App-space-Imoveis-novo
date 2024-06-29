@@ -40,6 +40,7 @@ class MyTextFormField extends StatelessWidget {
                   : (color?.withOpacity(0.5) ?? const Color.fromARGB(255, 100, 100, 100)), // Cor ajustada para desativado
                 fontSize: 12,
               ), // Cor padrão se color for nulo
+              cursorColor: Colors.black,
               textAlignVertical: TextAlignVertical.center, // Centraliza o texto verticalmente
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8), // Ajusta o padding para centralizar o texto

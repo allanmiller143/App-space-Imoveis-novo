@@ -120,12 +120,12 @@ class Networks extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             NetworkCard(image: 'assets/imgs/google.png',onPressed: (){googleSignIn(context);},),
-            const SizedBox(width: 15,),
-            NetworkCard(image: 'assets/imgs/apple.png',onPressed: () async{
-              await signOut();
-            },),
-            const SizedBox(width: 15,),
-            NetworkCard(image: 'assets/imgs/facebook.png',onPressed: (){},)
+            // const SizedBox(width: 15,),
+            // NetworkCard(image: 'assets/imgs/apple.png',onPressed: () async{
+            //   await signOut();
+            // },),
+            // const SizedBox(width: 15,),
+            // NetworkCard(image: 'assets/imgs/facebook.png',onPressed: (){},)
           ],
         )
 

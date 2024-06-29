@@ -27,6 +27,7 @@ class MySimpleTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor: Colors.black,
       onChanged: (value) {
         if (onChange != null) {
           onChange!(value);

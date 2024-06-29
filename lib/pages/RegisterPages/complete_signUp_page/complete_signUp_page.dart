@@ -88,11 +88,11 @@ class CompleteSignUpPage extends StatelessWidget {
                           ),
                           Positioned(
                             top: 40,
-                            left: MediaQuery.of(context).size.width * 0.5 - 40,
+                            left: MediaQuery.of(context).size.width * 0.5 - 50,
                             child: Image.asset(
                               'assets/imgs/logo.png',
-                              height: 80,
-                              width: 80,
+                              height: 100,
+                              width: 100,
                             ),
                           ),
                         ],

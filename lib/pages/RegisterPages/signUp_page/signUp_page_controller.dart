@@ -7,9 +7,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:space_imoveis/componentes/global_components/TextFields/PassTextFormField.dart';
 import 'package:space_imoveis/componentes/global_components/load_widget.dart';
-import 'package:space_imoveis/componentes/global_components/simple_text_form_field.dart';
-import 'package:space_imoveis/componentes/global_components/text_form_field.dart';
+import 'package:space_imoveis/componentes/global_components/TextFields/simple_text_form_field.dart';
+import 'package:space_imoveis/componentes/global_components/TextFields/text_form_field.dart';
 import 'package:space_imoveis/componentes/inser_property_components/mandatory.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 import 'package:space_imoveis/pages/RegisterPages/who_are_you_page/who_are_you_page_controller.dart';
@@ -138,9 +139,9 @@ class SignUpPageController extends GetxController {
       const SizedBox(height: 8),
       MandatoryOptional(text: 'Senha', subtext: 'Obrigatório', subtext2: 'Sua senha deve ter pelo menos 8 caracteres, com letras e números e um caractere especial'),
       const SizedBox(height: 4),
-      MyTextFormField(controller: password, hint: 'Senha', obscureText: true,icon: const  Icon(Icons.lock),),
+      PassMyTextFormField(controller: password, hint: 'Senha', obscureText: true,icon: const  Icon(Icons.lock),),
       const SizedBox(height: 8),
-      MyTextFormField(controller: confirmPassword, hint: 'Confirmar Senha', obscureText: true,icon: const  Icon(Icons.lock),),
+      PassMyTextFormField(controller: confirmPassword, hint: 'Confirmar Senha', obscureText: true,icon: const  Icon(Icons.lock),),
       
       whoAreYouController.selectedUserType != 'Proprietário' ? 
       Column(

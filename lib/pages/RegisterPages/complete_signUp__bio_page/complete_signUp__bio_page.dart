@@ -85,12 +85,14 @@ class CompleteSignUpBioPage extends StatelessWidget {
                                       labelText: 'Bio',
                                       border: OutlineInputBorder(
                                         borderSide: BorderSide(color: Colors.black, width: 0.5),
-                                        borderRadius: BorderRadius.all(Radius.circular(10))
+                                        borderRadius: BorderRadius.all(Radius.circular(15))
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(color: Color.fromARGB(255, 0, 0, 0)), // Define a borda como transparente
                                       ),
                                       focusedBorder: OutlineInputBorder(),
+                                      hoverColor: Colors.black,
+
                                       focusColor: Colors.black,
                                       labelStyle: TextStyle(color: Colors.black),
                                     ),
@@ -135,11 +137,11 @@ class CompleteSignUpBioPage extends StatelessWidget {
                           // ),
                           Positioned(
                             top: 40,
-                            left: MediaQuery.of(context).size.width * 0.5 - 40,
+                            left: MediaQuery.of(context).size.width * 0.5 - 50,
                             child: Image.asset(
                               'assets/imgs/logo.png',
-                              height: 80,
-                              width: 80,
+                              height: 100,
+                              width: 100,
                             ),
                           ),
                         ],

@@ -4,7 +4,7 @@ import 'package:space_imoveis/componentes/register_components/forget_passwork.da
 import 'package:space_imoveis/componentes/global_components/my_button.dart';
 import 'package:space_imoveis/componentes/register_components/networks.dart';
 import 'package:space_imoveis/componentes/register_components/no_account.dart';
-import 'package:space_imoveis/componentes/global_components/text_form_field.dart';
+import 'package:space_imoveis/componentes/global_components/TextFields/text_form_field.dart';
 import 'package:space_imoveis/pages/RegisterPages/login_page/login_page_controller.dart';
 
 // ignore: must_be_immutable
@@ -96,22 +96,12 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                           Positioned(
-                            top: 50,
-                            left: 10,
-                            child: IconButton(
-                              icon: Icon(Icons.arrow_circle_left, size: 40, color: controller.myGlobalController.color),
-                              onPressed: () {
-                                Get.back();
-                              },
-                            ),
-                          ),
-                          Positioned(
                             top: 40,
-                            left: MediaQuery.of(context).size.width * 0.5 - 40,
+                            left: MediaQuery.of(context).size.width * 0.5 - 60,
                             child: Image.asset(
                               'assets/imgs/logo.png',
-                              height: 80,
-                              width: 80,
+                              height: 120,
+                              width: 120,
                             ),
                           ),
                         ],

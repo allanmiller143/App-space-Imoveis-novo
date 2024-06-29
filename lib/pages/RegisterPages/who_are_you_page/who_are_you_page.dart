@@ -1,6 +1,7 @@
 
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/global_components/my_button.dart';
 import 'package:space_imoveis/pages/RegisterPages/who_are_you_page/who_are_you_page_controller.dart';
@@ -12,6 +13,7 @@ class WhoAreYouPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       home: GetBuilder<WhoAreYouPageController>(
         init: WhoAreYouPageController(),
         builder: (_) {
@@ -80,12 +82,14 @@ class WhoAreYouPage extends StatelessWidget {
                                               borderSide: BorderSide(color: Colors.black),
                                               borderRadius: BorderRadius.all(Radius.circular(10)),
                                             ),
-                                              labelText: "Tipo de usuário",
-                                              labelStyle: TextStyle(fontSize: 15),
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                                              ),
-                                              contentPadding: EdgeInsets.fromLTRB(12, 5, 0, 0),
+                                            fillColor: Colors.black,
+                                            labelText: "Tipo de usuário",
+                                            labelStyle: TextStyle(fontSize: 15),
+                                            border: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                            ),
+                                            contentPadding: EdgeInsets.fromLTRB(12, 5, 0, 0),
+                                            floatingLabelStyle: TextStyle(color: Colors.black),
                                               
                                           ),
                                       ),
@@ -127,12 +131,12 @@ class WhoAreYouPage extends StatelessWidget {
                             ),
                           ),
                           Positioned(
-                            top: 40,
-                            left: MediaQuery.of(context).size.width * 0.5 - 40,
+                            top: 35,
+                            left: MediaQuery.of(context).size.width * 0.5 - 50,
                             child: Image.asset(
                               'assets/imgs/logo.png',
-                              height: 80,
-                              width: 80,
+                              height: 100,
+                              width: 100,
                             ),
                           ),
                         ],

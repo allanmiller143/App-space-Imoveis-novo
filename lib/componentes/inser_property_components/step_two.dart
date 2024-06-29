@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/global_components/biggerTextField.dart';
 import 'package:space_imoveis/componentes/global_components/drop_down.dart';
 import 'package:space_imoveis/componentes/global_components/my_button.dart';
-import 'package:space_imoveis/componentes/global_components/simple_text_form_field.dart';
+import 'package:space_imoveis/componentes/global_components/TextFields/simple_text_form_field.dart';
 import 'package:space_imoveis/componentes/inser_property_components/mandatory.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 import 'package:intl/intl.dart';
