@@ -128,7 +128,7 @@ class PropertyCard2 extends StatelessWidget {
                     child: Text(
                       '${property['address']}, ${property['city']}-${property['state']}',
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: FontWeight.bold,
                       ),
                       maxLines: 1,
@@ -139,7 +139,7 @@ class PropertyCard2 extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: Text(
                       property['description'],
-                      style: TextStyle(fontSize: 8),
+                      style: TextStyle(fontSize: 10,wordSpacing: 0.2),
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                     ),

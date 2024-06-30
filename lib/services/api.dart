@@ -57,6 +57,7 @@ post(String route, var data, {String token = ''}) async {
   } catch (error) {
     // Em caso de erro, retornar o status e uma mensagem de erro
     print(error.toString());
+    print('ihu');
     return {
       'status': 500,
       'body': {'error': error.toString()},
@@ -64,6 +65,43 @@ post(String route, var data, {String token = ''}) async {
     
   }
 }
+
+postClick(String route, var data, {String token = ''}) async {
+  final url = Uri.parse('$URL$route');
+  try {
+    http.Response response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'x-access-token': token,
+      },
+      body: jsonEncode(data),
+    );
+
+    // Decodificar o corpo da resposta
+    var responseBody = json.decode(response.body);
+    
+    if (responseBody is Map<String, dynamic>) {
+      return {
+        'status': response.statusCode,
+        'body': responseBody,
+      };
+    } else {
+      return {
+        'status': response.statusCode,
+        'body': {'error': 'Resposta inesperada'},
+      };
+    }
+  } catch (error) {
+    // Em caso de erro, retornar o status e uma mensagem de erro
+    print(error.toString());
+    return {
+      'status': 500,
+      'body': {'error': error.toString()},
+    };
+  }
+}
+
 
 Future<Map<String, dynamic>> postFormData(String route, Map<String, dynamic> postDataExample, String token) async {
   final url = Uri.parse('$URL$route');

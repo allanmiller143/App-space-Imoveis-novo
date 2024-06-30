@@ -24,7 +24,7 @@ class PropertyCarousel extends StatelessWidget {
         return PropertyCard(property: property);
       },
       options: CarouselOptions(
-        height: 260, // Adjust the height to control the size of the cards
+        height: 270, // Adjust the height to control the size of the cards
         enlargeCenterPage: true,
         autoPlay: false,
         aspectRatio: 16 / 12,

@@ -68,6 +68,7 @@ dependencies:
   expandable_text: ^2.3.0
   cupertino_radio_choice: ^1.0.2
   easy_infinite_pagination: ^0.0.6
+  web_socket_channel: ^3.0.0
 
 dev_dependencies:
   flutter_test:

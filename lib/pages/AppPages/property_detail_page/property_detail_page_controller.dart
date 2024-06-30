@@ -26,22 +26,28 @@ class PropertyDetailController extends GetxController {
     return formatter.format(number);
   }
 
-  init() async {
-    try{
-      var response = await get('properties/$propertyId');
-      if(response['status'] == 200 || response['status'] == 201){
-        property = response['data'];
-      }else{
-        print('deu ruim');
-      }
-    }catch(e){
-      print('caiu no catch');
-    }
-    return true;
-  }
-
-  getComments() async{
+init() async {
+  try {
+    var response = await get('properties/$propertyId');
+    print('Response: $response');
     
+    if (response['status'] == 200 || response['status'] == 201) {
+      Map<String, dynamic> json = {}; // Garantir que é um mapa vazio
+      var clickResponse = await postClick('properties/times-seen/$propertyId', json);
+      print('Click Response: $clickResponse');
+      
+      property = response['data'];
+
+    } else {
+      print('Ocorreu um erro inesperado');
+    }
+  } catch (e) {
+    print('Ocorreu um erro inesperado, tente novamente mais tarde');
   }
+  return true;
+}
+
+
+
 
 }

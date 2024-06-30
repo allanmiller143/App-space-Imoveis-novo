@@ -137,7 +137,7 @@ class PropertyCard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
                   property['description'],
-                  style: TextStyle(fontSize: 8),
+                  style: TextStyle(fontSize: 10),
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -147,44 +147,60 @@ class PropertyCard extends StatelessWidget {
                   : Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 3),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
-                              Icon(Icons.bed_outlined, size: 14, color: const Color.fromARGB(255, 0, 0, 0)),
-                              SizedBox(width: 2),
-                              Text(
-                                property['bedrooms'].toString(),
-                                style: TextStyle(fontSize: 8),
-                                maxLines: 3,
-                                overflow: TextOverflow.ellipsis,
+                              Row(
+                                children: [
+                                  Icon(Icons.bed_outlined, size: 14, color: const Color.fromARGB(255, 0, 0, 0)),
+                                  SizedBox(width: 2),
+                                  Text(
+                                    property['bedrooms'].toString(),
+                                    style: TextStyle(fontSize: 10),
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(width: 5),
+                              Row(
+                                children: [
+                                  Icon(Icons.shower_outlined, size: 14, color: const Color.fromARGB(255, 0, 0, 0)),
+                                  SizedBox(width: 2),
+                                  Text(
+                                    property['bathrooms'].toString(),
+                                    style: TextStyle(fontSize: 10),
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(width: 5),
+                              Row(
+                                children: [
+                                  Icon(Icons.garage_outlined, size: 14, color: const Color.fromARGB(255, 0, 0, 0)),
+                                  SizedBox(width: 2),
+                                  Text(
+                                    property['parking_spaces'].toString(),
+                                    style: TextStyle(fontSize: 8),
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                          SizedBox(width: 5),
-                          Row(
-                            children: [
-                              Icon(Icons.shower_outlined, size: 14, color: const Color.fromARGB(255, 0, 0, 0)),
-                              SizedBox(width: 2),
-                              Text(
-                                property['bathrooms'].toString(),
-                                style: TextStyle(fontSize: 8),
-                                maxLines: 3,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
-                          ),
-                          SizedBox(width: 5),
-                          Row(
-                            children: [
-                              Icon(Icons.garage_outlined, size: 14, color: const Color.fromARGB(255, 0, 0, 0)),
-                              SizedBox(width: 2),
-                              Text(
-                                property['parking_spaces'].toString(),
-                                style: TextStyle(fontSize: 8),
-                                maxLines: 3,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
+                          Container(
+                            padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 169, 169, 169),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Text(
+                              '${formatNumber(property['size'])}m²',
+                              style: TextStyle(fontSize: 8),
+                            ),
                           ),
                         ],
                       ),
@@ -215,17 +231,7 @@ class PropertyCard extends StatelessWidget {
                               ),
                       ],
                     ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 169, 169, 169),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Text(
-                        '${formatNumber(property['size'])}m²',
-                        style: TextStyle(fontSize: 8),
-                      ),
-                    ),
+
                   ],
                 ),
               ),
