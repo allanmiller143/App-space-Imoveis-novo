@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/pages/AppPages/allHighligthedProperties/allHighligthedProperties.dart';
+import 'package:space_imoveis/pages/Chat/ChatPages/Conversation/Conversation.dart';
 import 'package:space_imoveis/pages/DashBoardPages/EditPropertyPage/EditPropertyPage.dart';
 import 'package:space_imoveis/pages/DashBoardPages/MainDashPage/MainDashPage.dart';
 import 'package:space_imoveis/pages/AppPages/advertiser_data/advertiser_data_page.dart';
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/all_highligthed_property', page: () => AllhighligthedpropertiesPage(),transition: Transition.rightToLeft,transitionDuration: const Duration(milliseconds: 400),preventDuplicates: false),
         GetPage(name: '/edit_property', page: () => EditProperty(),transition: Transition.rightToLeft,transitionDuration: const Duration(milliseconds: 400),preventDuplicates: false),
         GetPage(name: '/edit_property', page: () => EditProperty(),transition: Transition.rightToLeft,transitionDuration: const Duration(milliseconds: 400),preventDuplicates: false),
-
+        GetPage(name: '/chat_conversation', page: () => ConversationPage(),transition: Transition.rightToLeft,transitionDuration: const Duration(milliseconds: 400),preventDuplicates: false),
 
 
       ],

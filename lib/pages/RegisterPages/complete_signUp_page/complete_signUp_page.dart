@@ -26,7 +26,6 @@ class CompleteSignUpPage extends StatelessWidget {
                     return SingleChildScrollView(
                       child: Stack(
                         children: [ 
-                           
                           Center(
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width * 0.9,

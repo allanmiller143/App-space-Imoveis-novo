@@ -3,9 +3,11 @@
 // ignore_for_file: unnecessary_overrides, use_build_context_synchronously, unused_catch_clause
 
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:space_imoveis/componentes/global_components/load_widget.dart';
 import 'package:space_imoveis/componentes/global_components/TextFields/simple_text_form_field.dart';
@@ -35,12 +37,79 @@ class EditProfileDataPageController extends GetxController {
   var socialTwo = TextEditingController();
   var activateStreet  = false.obs;
   var  activateNeighborhood = false.obs;
+  File? imageFile; // imagem para ser coletada e inserida no banco para o perfil 
+
   late MyGlobalController myGlobalController;
 
   @override
   void onInit() {
     super.onInit();
     myGlobalController = Get.find();
+  }
+   pick(ImageSource source) async {
+    final imagePicker = ImagePicker();
+    final pickedFile = await imagePicker.pickImage(source: source);
+    if (pickedFile != null) {
+      imageFile = File(pickedFile.path);
+      update();
+    }
+  }
+  showBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(5)),
+      ),
+      builder: (BuildContext context) {
+        return SizedBox(
+          // Conteúdo do BottomSheet
+          height: 200,
+          child: Column(
+            children: [
+              const ListTile(
+                title: Text(
+                  'Escolha sua foto de perfil ',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontFamily: 'OpenSans-VariableFont_wdth,wght'),
+                ),
+              ),
+              ListTile(
+                title: const Text(
+                  'Abrir galeria',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontFamily: 'AsapCondensed-Medium'),
+                ),
+                leading: const Icon(
+                  Icons.photo,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
+                onTap: () {
+                  pick(ImageSource.gallery);
+                },
+              ),
+              ListTile(
+                title: const Text(
+                  'Abrir camera',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontFamily: 'AsapCondensed-Medium'),
+                ),
+                leading: const Icon(
+                  Icons.camera_alt,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
+                onTap: () {
+                  pick(ImageSource.camera);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   init() async {

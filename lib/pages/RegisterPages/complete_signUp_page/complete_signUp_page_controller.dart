@@ -14,8 +14,6 @@ import 'package:space_imoveis/config/controllers/global_controller.dart';
 import 'package:space_imoveis/services/api.dart';
 
 class CompleteSignUpPageController extends GetxController {
-  var email = TextEditingController();
-  var password = TextEditingController();
   File? imageFile; // imagem para ser coletada e inserida no banco para o perfil 
   late MyGlobalController myGlobalController;
 

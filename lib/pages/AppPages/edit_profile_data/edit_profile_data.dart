@@ -5,6 +5,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/global_components/my_button.dart';
+import 'package:space_imoveis/componentes/register_components/signUp_photo.dart';
+import 'package:space_imoveis/pages/AppPages/edit_profile_data/editPhoto.dart';
 import 'package:space_imoveis/pages/AppPages/edit_profile_data/edit_profile_data_controller.dart';
 
 class EditProfileDataPage extends StatelessWidget {
@@ -103,6 +105,21 @@ class EditProfileDataPage extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: controller.myGlobalController.userInfo['type'] != 'client' ? controller.gerarTextFields() : controller.gerarTextFieldsClient(),
                                     ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  ExpansionTile(
+                                    title: Text('Foto de perfil'),
+                                    subtitle: Text('Insira/altere sua foto',style: TextStyle(color: const Color.fromARGB(255, 87, 87, 87),fontSize: 12,fontWeight: FontWeight.w300),),
+                                    childrenPadding: EdgeInsets.all(0),
+                                    tilePadding: EdgeInsets.all(0),
+                                    shape: Border.fromBorderSide(BorderSide.none),
+                                    children: <Widget>[
+                                      EditPhoto(
+                                        onPressed: (){controller.showBottomSheet(context);},
+                                        image: controller.imageFile,
+                                        imageUrl: controller.myGlobalController.userInfo['profile'] != null && controller.myGlobalController.userInfo['profile']['url'] != '' ? controller.myGlobalController.userInfo['profile']['url'] : null,
+                                      ),
+                                    ],
                                   ),
                                   const SizedBox(height: 10),
                                   MyButtom(

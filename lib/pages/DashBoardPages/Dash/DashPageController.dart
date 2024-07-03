@@ -73,7 +73,6 @@ getSeenList() async {
     var response = await get('dashboard/views/monthly', token: myGlobalController.token);
     if (response['status'] == 200 || response['status'] == 201) {
       SeenList = response['data'];
-      print( SeenList);
     } else {
       print('deu ruim no else');
     }
@@ -87,7 +86,6 @@ getLikesList() async {
     var response = await get('dashboard/likes/monthly', token: myGlobalController.token);
     if (response['status'] == 200 || response['status'] == 201) {
       likesList = response['data'];
-      print( likesList);
     } else {
       print('deu ruim no else');
     }
