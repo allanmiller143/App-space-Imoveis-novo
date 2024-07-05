@@ -335,11 +335,12 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyGlobalController mgc = Get.find();
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         TextButton(
-          child: const Text('Esqueceu a senha?', style: TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
+          child: Text('Esqueceu a senha?', style: TextStyle(color: mgc.color3)),
           onPressed: () {
             forgetPass(context);
           },

@@ -40,7 +40,7 @@ class MyTextFormField extends StatelessWidget {
                   : (color?.withOpacity(0.5) ?? const Color.fromARGB(255, 100, 100, 100)), // Cor ajustada para desativado
                 fontSize: 12,
               ), // Cor padrão se color for nulo
-              cursorColor: Colors.black,
+              cursorColor: Color.fromARGB(255, 9, 47, 70),
               textAlignVertical: TextAlignVertical.center, // Centraliza o texto verticalmente
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8), // Ajusta o padding para centralizar o texto
@@ -52,13 +52,13 @@ class MyTextFormField extends StatelessWidget {
                 floatingLabelBehavior: FloatingLabelBehavior.auto, // Faz a label flutuar
                 hintStyle: TextStyle(
                   color: enable 
-                    ? (color ?? const Color.fromARGB(255, 0, 0, 0)) 
+                    ? (color ?? const Color.fromARGB(255, 9, 47, 70)) 
                     : (color?.withOpacity(0.2) ?? const Color.fromARGB(255, 200, 200, 200)), // Cor ajustada para desativado
                   fontWeight: FontWeight.w400,
                 ),
                 prefixIcon: icon,
                 prefixIconColor: enable 
-                  ? (color ?? const Color.fromARGB(255, 0, 0, 0)) 
+                  ? (color ?? const Color.fromARGB(255, 9, 47, 70) ) 
                   : (color?.withOpacity(0.1) ?? const Color.fromARGB(255, 183, 183, 183)), // Cor ajustada para desativado
                 suffixIcon: obscureText
                     ? IconButton(
@@ -69,7 +69,7 @@ class MyTextFormField extends StatelessWidget {
                         icon: Icon(
                           showPassword.value ? Icons.visibility : Icons.visibility_off,
                           color: enable 
-                            ? (color ?? const Color.fromARGB(255, 0, 0, 0)) 
+                            ? (color ?? const Color.fromARGB(255, 9, 47, 70)) 
                             : (color?.withOpacity(0.5) ?? const Color.fromARGB(255, 100, 100, 100)), // Cor ajustada para desativado
                         ),
                       )
@@ -77,7 +77,7 @@ class MyTextFormField extends StatelessWidget {
                 suffixIconColor: Colors.white,
                 labelStyle: TextStyle(
                   color: enable 
-                    ? (color ?? const Color.fromARGB(255, 0, 0, 0)) 
+                    ? (color ?? const Color.fromARGB(255, 9, 47, 70)) 
                     : (color?.withOpacity(0.2) ?? const Color.fromARGB(255, 200, 200, 200)), // Cor ajustada para desativado
                   fontWeight: FontWeight.w400,
                   fontSize: 13, // Tamanho da fonte da label quando flutuando
@@ -86,7 +86,7 @@ class MyTextFormField extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   borderSide: BorderSide(
                     color: enable 
-                      ? (color ?? const Color.fromARGB(255, 0, 0, 0)) 
+                      ? (color ?? const Color.fromARGB(255, 9, 47, 70))
                       : (color?.withOpacity(0.5) ?? const Color.fromARGB(255, 100, 100, 100)), // Cor ajustada para desativado
                   ),
                 )

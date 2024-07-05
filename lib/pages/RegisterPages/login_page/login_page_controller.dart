@@ -14,6 +14,13 @@ class LoginPageController extends GetxController {
   var password = TextEditingController();
   late MyGlobalController myGlobalController;
 
+  @override
+  void onInit() {
+    myGlobalController = Get.find();
+
+    super.onInit();
+    init();
+  }
 
   init() async {
     myGlobalController = Get.find();

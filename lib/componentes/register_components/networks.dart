@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:space_imoveis/componentes/global_components/load_widget.dart';
 import 'package:space_imoveis/componentes/global_components/snack_bar.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 import 'package:space_imoveis/services/api.dart';
@@ -15,8 +16,8 @@ class Networks extends StatelessWidget {
 
   googleSignIn(BuildContext context) async {
     try {
+      showLoad(context);
       var result = await signInWithGoogle();
-      print(result);
       var userData = {
           'name': result['auth'].user!.displayName,
           'email': result['auth'].user!.email,
@@ -39,23 +40,25 @@ class Networks extends StatelessWidget {
               myGlobalController.userInfo = loginWithGoogle['body']['user'];
               myGlobalController.token = loginWithGoogle['body']['token'];
               myGlobalController.userFavorites = favoritesResponse['data'];
-              print(favoritesResponse['data']);
               final SharedPreferences prefs = await SharedPreferences.getInstance();
               await prefs.setString('user', jsonEncode(loginWithGoogle['body']['user']));
               await prefs.setString('token', loginWithGoogle['body']['token']);
               await prefs.setString('userFavorites', jsonEncode(favoritesResponse['data']));
+              Get.back();
               Get.toNamed('/home');
             }else{
+              Get.back();
               mySnackBar('Ocorreu um erro inesperado', false);
             }
           }else{
+            Get.back();
             print('deu ruim no login com o google, sendo um client');
           }
         }else{
+          Get.back();
           mySnackBar('Usuario ja existente, faça login com seu email e senha', false);
           signOut();
         }
-        print(response['data']);
 
       }else{
         var response = await post('clients', userData);
@@ -73,14 +76,17 @@ class Networks extends StatelessWidget {
               await prefs.setString('user', jsonEncode(loginResponse['body']['user']));
               await prefs.setString('token', loginResponse['body']['token']);
               await prefs.setString('userFavorites', jsonEncode([]));
+              Get.back();
               Get.toNamed('/home');
               mySnackBar('Conta criada e login feito com sucesso', true);
           }else{
+            Get.back();
             mySnackBar('Ocorreu um erro inesperado', false);
           }
         }
       }
     } catch (e) {
+      Get.back();
       mySnackBar('Ocorreu um erro inesperado jnfgiofgoif', false);
     }
   }
@@ -94,22 +100,22 @@ class Networks extends StatelessWidget {
             Expanded(
               child: Container(
                 height: 0.5,
-                color: const Color.fromARGB(255, 0, 0, 0),
+                color: Color.fromARGB(255, 0, 0, 0),
                 margin: const EdgeInsets.symmetric(horizontal: 10),
               ),
             ),
             const Text(
               'Ou continue com',
               style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: Color.fromARGB(255, 45, 45, 45),
                 fontWeight: FontWeight.w300,
-                fontSize: 14
+                fontSize: 12
               ),
             ),
             Expanded(
               child: Container(
                 height: 0.5,
-                color: const Color.fromARGB(255, 0, 0, 0),
+                color: Color.fromARGB(255, 0, 0, 0),
                 margin: const EdgeInsets.symmetric(horizontal: 10),
               ),
             ),
@@ -149,26 +155,30 @@ class NetworkCard extends StatelessWidget {
   );
   @override
   Widget build(BuildContext context) {
+    MyGlobalController mgc = Get.find();
     return GestureDetector(
       onTap: (){
         onPressed();
       },
-      child: Material(
-        elevation: 5,
-        borderRadius: BorderRadius.circular(10),
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.125,
-          height: MediaQuery.of(context).size.width * 0.125,
+      child:  Container(
+          width: MediaQuery.of(context).size.width * 0.6,
+          height: MediaQuery.of(context).size.width * 0.1,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color:const Color.fromARGB(255, 255, 255, 255),
+            borderRadius: BorderRadius.circular(8),
+            color:mgc.color3
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(image,fit: BoxFit.cover,width: double.infinity, height: double.infinity,),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                child: Image.asset(image,fit: BoxFit.cover,width: 25, height: 25),
+              ),
+              const Text('Entrar com Google',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.w500,fontSize: 12),)
+            ],
           ),
         ),
-      ),
+      
     );
   }
 }

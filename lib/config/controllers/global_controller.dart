@@ -10,6 +10,7 @@ class MyGlobalController extends GetxController {
   RxList<dynamic> userFavorites = <dynamic>[].obs; // userFavorites como RxList<String>
   var color = Color.fromARGB(255, 9, 47, 70);
   var color2 = Color.fromARGB(13, 52, 52, 52);
+  var color3 = Color.fromARGB(255, 44, 87, 109);
 
 }
 

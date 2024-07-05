@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:space_imoveis/componentes/global_components/biggerTextField.dart';
+import 'package:space_imoveis/componentes/global_components/TextFields/biggerTextField.dart';
 import 'package:space_imoveis/componentes/global_components/drop_down.dart';
 import 'package:space_imoveis/componentes/global_components/my_button.dart';
 import 'package:space_imoveis/componentes/global_components/TextFields/simple_text_form_field.dart';

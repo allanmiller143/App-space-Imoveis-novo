@@ -28,6 +28,7 @@ class MandatoryOptional extends StatelessWidget {
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
+                    color: controller.color
                   ),
               ),
               Text(
@@ -36,7 +37,7 @@ class MandatoryOptional extends StatelessWidget {
                   fontSize: 10,
                   fontWeight: FontWeight.w300,
                   fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
-                  color: subtext == 'Obrigatório'? controller.color:Color.fromARGB(255, 6, 126, 74)
+                  color: subtext == 'Obrigatório'? controller.color3:Color.fromARGB(255, 6, 126, 74)
 
                 ),
               ),
@@ -49,7 +50,7 @@ class MandatoryOptional extends StatelessWidget {
               fontSize: 10,
               fontWeight: FontWeight.w300,
               fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
-              color: const Color.fromARGB(255, 97, 97, 97),
+              color: controller.color3
             ),
           ),
         ],

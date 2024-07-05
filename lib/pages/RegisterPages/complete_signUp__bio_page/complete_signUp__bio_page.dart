@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:space_imoveis/componentes/global_components/TextFields/biggerTextField.dart';
 import 'package:space_imoveis/componentes/global_components/my_button.dart';
 import 'package:space_imoveis/pages/RegisterPages/complete_signUp__bio_page/complete_signUp__bio_page_controller.dart';
 
@@ -22,37 +23,70 @@ class CompleteSignUpBioPage extends StatelessWidget {
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.hasData) {
-                    return SingleChildScrollView(
+                    return Container(
+                    child: SingleChildScrollView(
                       child: Stack(
-                        children: [                            
-                          Center(
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: MediaQuery.of(context).size.height,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height * 0.25,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [controller.myGlobalController.color, controller.myGlobalController.color3],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.vertical(
+                                bottom: Radius.elliptical(MediaQuery.of(context).size.width, 90),
+                              ),
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0,120,0,0),
+            
+                              ),
+
+                              Container(
+                                margin: EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+                                child: Material(
+                                  elevation: 4,
+                                  borderRadius: BorderRadius.circular(10),
+                                
+                                  child: Container(
+                                    margin: EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+                                    width: MediaQuery.of(context).size.width,
+                                    
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15)
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      
+                                      children: [
+                                       
                                   const SizedBox(height: 15,),
                                   SizedBox(
                                     width: MediaQuery.of(context).size.width * 0.8,
-                                    child: const Text(
+                                    child: Text(
                                       'Vamos inserir uma Bio?',
                                       style: TextStyle(
-                                        fontSize: 28,
-                                        color: Color.fromARGB(223, 0, 0, 0),
-                                        height: 1.2                                      
+                                        fontSize: 24,
+                                        color: controller.myGlobalController.color,
+                                        height: 1.2,
+                                                                            
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
                                   SizedBox(
                                     width: MediaQuery.of(context).size.width * 0.8,
-                                    child: const Text(
+                                    child: Text(
                                       'Nos fale um pouco de você',
                                       style: TextStyle(
-                                        fontSize: 18,
-                                        color: Color.fromARGB(223, 0, 0, 0),
+                                        fontSize: 14,
+                                        color: controller.myGlobalController.color3,
                                         height: 1.2                                      
                                       ),
                                       textAlign: TextAlign.center,
@@ -61,10 +95,10 @@ class CompleteSignUpBioPage extends StatelessWidget {
                                   const SizedBox(height: 15),
                                   SizedBox(
                                     width: MediaQuery.of(context).size.width * 0.8,
-                                    child: const Text(
+                                    child: Text(
                                       'Corretores e imobiliárias com uma bio detalhada tendem a ser mais bem vistos na plataforma, ',
                                       style: TextStyle(
-                                        fontSize: 12,letterSpacing: 0.1,color: Color.fromARGB(166, 0, 0, 0),
+                                        fontSize: 12,letterSpacing: 0.1,color: controller.myGlobalController.color,
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
@@ -72,31 +106,8 @@ class CompleteSignUpBioPage extends StatelessWidget {
 
                                   const SizedBox(height: 15),
 
-                                  TextFormField(
-                                    minLines: 1, // Número mínimo de linhas
-                                    maxLines: 7, // Número máximo de linhas
-                                    expands: false, // Para expandir automaticamente
-                                    controller: controller.bio,
-                                    style: const TextStyle(
-                                      fontSize: 13,
-                                    ),     
-                                    decoration: const InputDecoration(
-                                      hintText: 'Digite o seu texto aqui...',
-                                      labelText: 'Bio',
-                                      border: OutlineInputBorder(
-                                        borderSide: BorderSide(color: Colors.black, width: 0.5),
-                                        borderRadius: BorderRadius.all(Radius.circular(15))
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(color: Color.fromARGB(255, 0, 0, 0)), // Define a borda como transparente
-                                      ),
-                                      focusedBorder: OutlineInputBorder(),
-                                      hoverColor: Colors.black,
+                                  MyBiggerTextFormField(controller: controller.bio,hint: 'Bio',),
 
-                                      focusColor: Colors.black,
-                                      labelStyle: TextStyle(color: Colors.black),
-                                    ),
-                                  ),
 
                                   
                                   const SizedBox(height: 15),
@@ -109,33 +120,30 @@ class CompleteSignUpBioPage extends StatelessWidget {
                                         },label: 'Pular',
                                         buttomColor: const Color.fromARGB(255, 165, 165, 165),
                                         textColor: const Color.fromARGB(255, 255, 255, 255),
-                                        width: MediaQuery.of(context).size.width * 0.4,
+                                        width: MediaQuery.of(context).size.width * 0.35,
                                       ),
                                       MyButtom(
                                         onPressed: () {
                                           controller.insertBio(context);
                                         },
                                         label: 'Próximo',
-                                        buttomColor: controller.myGlobalController.color,
-                                        width: MediaQuery.of(context).size.width * 0.4,
+                                        buttomColor: controller.myGlobalController.color3,
+                                        width: MediaQuery.of(context).size.width * 0.35,
                                       ),
                                     ],
                                   ),
-                                ],
+                               
+                        
+                                      ],                   
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
+
+                         
+                            ],
                           ),
-                          // Positioned(
-                          //   top: 50,
-                          //   left: 10,
-                          //   child: IconButton(
-                          //     icon: Icon(Icons.arrow_circle_left, size: 40, color: controller.myGlobalController.color),
-                          //     onPressed: () {
-                          //       Get.back();
-                          //     },
-                          //   ),
-                          // ),
-                          Positioned(
+                                                    Positioned(
                             top: 40,
                             left: MediaQuery.of(context).size.width * 0.5 - 50,
                             child: Image.asset(
@@ -146,7 +154,9 @@ class CompleteSignUpBioPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                    );
+                    ),
+
+                  );
                   } else {
                     return const Text('erro');
                   }

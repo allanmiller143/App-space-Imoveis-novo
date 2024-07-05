@@ -24,28 +24,73 @@ class SignUpPage extends StatelessWidget {
                   if (snapshot.hasData) {
                     return SingleChildScrollView(
                       child: Stack(
-
                           children: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.05),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const SizedBox(height: 125), // Espaço para o logo e botão voltar
-                                  Text(
-                                    'Bem-vindo ${controller.whoAreYouController.selectedUserType}',
-                                    style: const TextStyle(
-                                      fontSize: 24,
-                                      color: Color.fromARGB(223, 0, 0, 0),
+                            Container(
+                    child: SingleChildScrollView(
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height * 0.25,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [controller.myGlobalController.color, controller.myGlobalController.color3],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.vertical(
+                                bottom: Radius.elliptical(MediaQuery.of(context).size.width, 90),
+                              ),
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0,50,0,0),
+                                child: Center(
+                                  child: Text('Bem vindo!',
+                                    style: TextStyle(
+                                      color: const Color.fromARGB(255, 255, 255, 255),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold
                                     ),
                                   ),
-                                  const Text(
-                                    'Complete o cadastro e anuncie seus imóveis',
+                                ),
+                              ),
+                              Center(
+                                child: Text('${controller.whoAreYouController.selectedUserType}',
+                                  style: TextStyle(
+                                    color: Color.fromARGB(200, 255, 255, 255),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+                                child: Material(
+                                  elevation: 4,
+                                  borderRadius: BorderRadius.circular(10),
+                                
+                                  child: Container(
+                                    margin: EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+                                    width: MediaQuery.of(context).size.width,
+                                    
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15)
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      
+                                      children: [
+    
+                                         Text(
+                                    'Complete o cadastro e anuncie seus imóveis na Space Imóveis',
                                     style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       letterSpacing: 0.1,
-                                      color: Color.fromARGB(166, 0, 0, 0),
+                                      color: controller.myGlobalController.color,
+                                      fontWeight: FontWeight.bold
                                     ),
                                   ),
                                   const SizedBox(height: 15),
@@ -71,34 +116,37 @@ class SignUpPage extends StatelessWidget {
                                     style: TextStyle(fontSize: 13,letterSpacing: 0.1),
                                     textAlign: TextAlign.center,
                                   ),
-                                  TextButton(
-                                    style: const ButtonStyle(
-                                      fixedSize: WidgetStatePropertyAll(Size(200, 10)),
+
+      
+                                   
+
+                                        const SizedBox(height: 15),
+                                      ],                   
                                     ),
-                                    onPressed: (){Get.back();}, child: const Text('Já tem uma Conta? Clique aqui', style: TextStyle(fontSize: 12,letterSpacing: 0.1,color: Colors.black),)
-                                  )
-                                ],
+                                  ),
+                                ),
                               ),
-                            ),
+
+                         
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+
+                  ),
+                            
                             Positioned(
                               top: 50,
                               left: 10,
                               child: IconButton(
-                              icon: Icon(Icons.arrow_circle_left, size: 40, color: controller.myGlobalController.color),
+                              icon: Icon(Icons.arrow_circle_left, size: 40, color: Color.fromARGB(255, 255, 255, 255)),
                                 onPressed: () {
                                   Get.back();
                                 },
                               ),
                             ),
-                            Positioned(
-                              top: 35,
-                              left: MediaQuery.of(context).size.width * 0.5 - 50,
-                              child: Image.asset(
-                                'assets/imgs/logo.png',
-                                height: 100,
-                                width: 100,
-                              ),
-                            ),
+
                           ],
                         
                       ),

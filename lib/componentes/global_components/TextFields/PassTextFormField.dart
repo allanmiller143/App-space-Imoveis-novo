@@ -46,7 +46,7 @@ class PassMyTextFormField extends StatelessWidget {
               constraints: const BoxConstraints(
                 maxHeight: 40,
               ),
-              fillColor: const Color.fromARGB(255, 243, 243, 243),
+              fillColor: Color.fromARGB(12, 0, 0, 0),
               filled: true,
               contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8), // Ajusta o padding para centralizar o texto
               border: OutlineInputBorder(

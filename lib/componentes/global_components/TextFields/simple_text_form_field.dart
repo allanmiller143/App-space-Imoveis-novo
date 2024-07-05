@@ -53,7 +53,7 @@ class MySimpleTextFormField extends StatelessWidget {
         constraints: const BoxConstraints(
           maxHeight: 40,
         ),
-        fillColor: const Color.fromARGB(255, 243, 243, 243),
+        fillColor: Color.fromARGB(12, 0, 0, 0),
         filled: true,
         contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
         border: OutlineInputBorder(

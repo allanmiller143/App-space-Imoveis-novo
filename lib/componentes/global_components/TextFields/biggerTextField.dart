@@ -17,6 +17,8 @@ class MyBiggerTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor: Colors.black,
+
       onChanged: (value) {
         if (onChange != null) {
           onChange!(value);
@@ -38,7 +40,7 @@ class MyBiggerTextFormField extends StatelessWidget {
           maxHeight: 200,
           minHeight: 40,
         ),
-        fillColor: const Color.fromARGB(255, 243, 243, 243), // Define o fundo branco
+        fillColor: Color.fromARGB(12, 0, 0, 0),
         filled: true,
         contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8), // Ajusta o preenchimento para alinhar o texto ao topo
         border: OutlineInputBorder(
