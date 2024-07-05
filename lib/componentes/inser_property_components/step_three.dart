@@ -8,7 +8,6 @@ import 'package:space_imoveis/componentes/inser_property_components/step_one.dar
 import 'package:space_imoveis/componentes/inser_property_components/step_two.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 import 'package:intl/intl.dart';
-import 'package:space_imoveis/pages/AppPages/insert_property/insert_property_controller.dart';
 
 class StepThree extends StatelessWidget {
   MyGlobalController  myGlobalController = Get.find();

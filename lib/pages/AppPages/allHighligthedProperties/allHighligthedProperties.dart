@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/allHighligthedProperties/Grid/HighligthedPropertyGrid.dart';
 import 'package:space_imoveis/componentes/allHighligthedProperties/filterCards.dart';
-import 'package:space_imoveis/componentes/global_components/app_bar.dart'; // Certifique-se de que este caminho está correto
-import 'package:space_imoveis/componentes/global_components/drawer.dart';
 import 'package:space_imoveis/pages/AppPages/allHighligthedProperties/allHighligthedPropertiesController.dart';
-
 
 // ignore: must_be_immutable
 class AllhighligthedpropertiesPage extends StatelessWidget {

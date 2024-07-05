@@ -4,7 +4,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:space_imoveis/componentes/global_components/load_widget.dart';
 import 'package:space_imoveis/componentes/global_components/snack_bar.dart';
 import 'package:space_imoveis/componentes/inser_property_components/imageSelect.dart';
-import 'package:space_imoveis/pages/AppPages/insert_property/insert_property_controller.dart';
 import 'package:space_imoveis/services/api.dart';
 
 class InsertDialog extends StatelessWidget {

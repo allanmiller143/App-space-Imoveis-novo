@@ -1,11 +1,7 @@
 // ignore_for_file: must_be_immutable
-
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/global_components/my_button.dart';
-import 'package:space_imoveis/componentes/register_components/signUp_photo.dart';
 import 'package:space_imoveis/pages/AppPages/edit_profile_data/editPhoto.dart';
 import 'package:space_imoveis/pages/AppPages/edit_profile_data/edit_profile_data_controller.dart';
 

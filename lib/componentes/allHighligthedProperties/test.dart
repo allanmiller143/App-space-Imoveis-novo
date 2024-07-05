@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
-import 'package:space_imoveis/pages/AppPages/allHighligthedProperties/allHighligthedPropertiesController.dart';
 
 class CustomRadioChoice extends StatelessWidget {
   final Map<String, String> choices;

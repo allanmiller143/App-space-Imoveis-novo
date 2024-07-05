@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/register_components/forget_passwork.dart';
-import 'package:space_imoveis/componentes/global_components/my_button.dart';
 import 'package:space_imoveis/componentes/register_components/networks.dart';
 import 'package:space_imoveis/componentes/register_components/no_account.dart';
 import 'package:space_imoveis/componentes/global_components/TextFields/text_form_field.dart';
