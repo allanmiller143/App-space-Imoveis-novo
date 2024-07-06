@@ -134,31 +134,30 @@ class RatingSummaryWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 Container(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: NumberPaginator(
-                    initialPage: cc.currentPage.value,
-                    numberPages: ((cc.totalComments / 6).ceil()),
+                    initialPage: cc.totalComments.value == 0 ? 0 : cc.currentPage.value,
+                    numberPages: cc.totalComments.value == 0 ? 1 : ((cc.totalComments.value / 6).ceil()),
                     onPageChange: (int index) {
                       cc.currentPage.value = index;
                       cc.getCommnets(false);
-                              
                     },
                     showNextButton: true,
                     showPrevButton: true,
                     config: NumberPaginatorUIConfig(
-                      buttonSelectedBackgroundColor: mgc.color, // Cor de fundo do botão selecionado
-                      buttonUnselectedForegroundColor: const Color.fromARGB(255, 0, 0, 0), // Cor do texto dos botões não selecionados
-                      buttonUnselectedBackgroundColor: Colors.white, // Cor de fundo dos botões não selecionados
-                      buttonSelectedForegroundColor: Colors.white, // Cor do texto do botão selecionado
+                      buttonSelectedBackgroundColor: mgc.color,
+                      buttonUnselectedForegroundColor: const Color.fromARGB(255, 0, 0, 0),
+                      buttonUnselectedBackgroundColor: Colors.white,
+                      buttonSelectedForegroundColor: Colors.white,
                       buttonPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                       buttonShape: CircleBorder(),
-                      height: 35, // Altura do botão
+                      height: 35,
                       buttonTextStyle: TextStyle(fontSize: 10),
                     ),
                   ),
                 ),
+
               ],
             ),
           ));

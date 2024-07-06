@@ -32,26 +32,6 @@ class ConversationController extends GetxController {
       final ChatService chatService = Get.find();
       chatService.sendMessage(message);
 
-      // Captura o tamanho inicial das mensagens
-
-      // Obtém uma referência para o socket
-      //final socket = chat_socket_controller.socket;
-
-      // Define um listener para o evento 'message'
-      // void handleMessage(data) {
-      //   // Adiciona a mensagem no início da lista
-      //   messages.insert(0, data);
-      //   messagesSize.value = messages.length;
-      //   print(messages.length);
-
-      //   // Remove o listener após adicionar a mensagem
-      //   if (messages.length > initialMessagesLength) {
-      //     socket.off('message', handleMessage);
-      //   }
-      // }
-
-      // Adiciona o listener ao evento 'message'
-      //socket.on('message', handleMessage);
     }
 
 }

@@ -6,6 +6,7 @@ import 'package:space_imoveis/componentes/global_components/drawer.dart';
 import 'package:space_imoveis/componentes/global_components/snack_bar.dart';
 import 'package:space_imoveis/componentes/property_detail_components/advertiser_mini_card.dart';
 import 'package:space_imoveis/componentes/property_detail_components/buy_rent_visit.dart';
+import 'package:space_imoveis/componentes/property_detail_components/openNewChat.dart';
 import 'package:space_imoveis/componentes/property_detail_components/property_detail_card1.dart';
 import 'package:space_imoveis/componentes/property_detail_components/property_detail_img_carrossel.dart';
 import 'package:space_imoveis/pages/AppPages/advertiser_data/advertiser_data_page_controller.dart';
@@ -56,6 +57,8 @@ class PropertyDetail extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         SizedBox(height: 15),
+                                        OpenNewChat(advertiserData: controller.property['seller'],),
+                                        SizedBox(height: 5),
                                         AdvertiserMiniCard(
                                           onPressed: (){
                                             if(controller.property['seller']['type']== 'owner'){

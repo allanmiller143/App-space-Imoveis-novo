@@ -39,7 +39,7 @@ class CommentsController extends GetxController {
       if(response['status'] == 200 || response['status'] == 201){  
         commets = response['data']['result'];
         totalComments.value = response['data']['pagination']['total'];
-        print('coments: $commets');
+        print('coments: ${totalComments.value}');
       }
     } catch(error){
       print('cai no catch');

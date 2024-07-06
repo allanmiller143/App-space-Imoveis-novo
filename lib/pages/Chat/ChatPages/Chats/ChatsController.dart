@@ -17,8 +17,7 @@ class ChatsPageController extends GetxController {
   void onInit() {
     super.onInit();
     myGlobalController = Get.find();
-    chat_socket_controller = Get.put(Chat_Socket_Controller());
-    Get.put(ChatService(chat_socket_controller.socket));
+    chat_socket_controller = Get.find();
     init(); // Call init when the controller is initialized
   }
 
