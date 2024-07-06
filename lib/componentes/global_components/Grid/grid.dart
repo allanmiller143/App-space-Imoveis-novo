@@ -28,7 +28,7 @@ class PropertyGrid extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 5.0,
                 mainAxisSpacing: 5,
-                childAspectRatio: 0.75,
+                childAspectRatio: 0.72,
               ),
               itemCount: 6,
               itemBuilder: (context, index) {
@@ -62,7 +62,7 @@ class PropertyGrid extends StatelessWidget {
                         crossAxisCount: 2, // Number of columns
                         crossAxisSpacing: 5.0,
                         mainAxisSpacing: 5,
-                        childAspectRatio: 0.75, // Aspect ratio between width and height
+                        childAspectRatio: 0.72, // Aspect ratio between width and height
                       ),
                       itemCount: controller.properties.length,
                       itemBuilder: (context, index) {

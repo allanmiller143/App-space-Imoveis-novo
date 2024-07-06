@@ -111,7 +111,7 @@ class DashPage extends StatelessWidget {
                       ),
                       SizedBox(height: 5),
                       Container(
-                        height: 255,
+                        height: 270,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: controller.top3.length > 3 ? 3 : controller.top3.length,
