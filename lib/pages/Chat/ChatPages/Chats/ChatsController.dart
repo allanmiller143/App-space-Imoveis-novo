@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:space_imoveis/config/controllers/Chat_Socket_Controller.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
-import 'package:space_imoveis/pages/Chat/ChatService/ChatApi.dart';
 import 'package:space_imoveis/services/api.dart';
 
 class ChatsPageController extends GetxController {

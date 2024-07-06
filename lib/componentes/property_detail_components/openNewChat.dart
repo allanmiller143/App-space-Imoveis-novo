@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:space_imoveis/config/controllers/Chat_Socket_Controller.dart';
-import 'package:space_imoveis/config/controllers/global_controller.dart';
-import 'package:space_imoveis/pages/Chat/ChatService/ChatApi.dart';
+
 
 class OpenNewChat extends StatelessWidget {
   var  advertiserData;
@@ -14,7 +12,6 @@ class OpenNewChat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MyGlobalController mgc = Get.find();
     return 
         GestureDetector(
           onTap: () async{

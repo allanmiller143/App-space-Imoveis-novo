@@ -1,6 +1,4 @@
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/global_components/drop_down.dart';
 import 'package:space_imoveis/componentes/global_components/my_button.dart';
