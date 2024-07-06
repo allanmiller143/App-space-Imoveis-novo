@@ -340,7 +340,7 @@ class ForgetPassword extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         TextButton(
-          child: Text('Esqueceu a senha?', style: TextStyle(color: mgc.color3)),
+          child: Text('Esqueceu a senha?', style: TextStyle(color: mgc.color)),
           onPressed: () {
             forgetPass(context);
           },

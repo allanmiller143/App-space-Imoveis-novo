@@ -2,6 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:space_imoveis/componentes/global_components/drop_down.dart';
 import 'package:space_imoveis/componentes/global_components/my_button.dart';
 import 'package:space_imoveis/pages/RegisterPages/who_are_you_page/who_are_you_page_controller.dart';
 
@@ -95,29 +96,7 @@ class WhoAreYouPage extends StatelessWidget {
                                                   ),
                                                 ),
                                                 const SizedBox(height: 15),
-                                                DropdownSearch<String>(
-                                                  items: const ["Proprietário", "Corretor", "Imobiliária"],
-                                                  dropdownDecoratorProps: const DropDownDecoratorProps(
-                                                    dropdownSearchDecoration: InputDecoration(
-                                                      focusColor: Colors.black,
-                                                      focusedBorder: OutlineInputBorder(
-                                                        borderSide: BorderSide(color: Colors.black),
-                                                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                      ),
-                                                      fillColor: Colors.black,
-                                                      labelText: "Tipo de usuário",
-                                                      labelStyle: TextStyle(fontSize: 15),
-                                                      border: OutlineInputBorder(
-                                                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                      ),
-                                                      contentPadding: EdgeInsets.fromLTRB(12, 5, 0, 0),
-                                                      floatingLabelStyle: TextStyle(color: Colors.black),
-                                                    ),
-                                                  ),
-                                                  onChanged: (value) {
-                                                    controller.selectedUserType = value.toString();
-                                                  },
-                                                ),
+                                                CustomDropdownButton(labelText: 'Tipo de usuário',items: ["Proprietário", "Corretor", "Imobiliária"],controller: controller.selectedUserType,),
                                                 const SizedBox(height: 10),
                                                 MyButtom(
                                                   onPressed: () {

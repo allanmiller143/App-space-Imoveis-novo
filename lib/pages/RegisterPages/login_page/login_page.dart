@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:space_imoveis/componentes/global_components/load_widget.dart';
 import 'package:space_imoveis/componentes/register_components/forget_passwork.dart';
 import 'package:space_imoveis/componentes/register_components/networks.dart';
 import 'package:space_imoveis/componentes/register_components/no_account.dart';
 import 'package:space_imoveis/componentes/global_components/TextFields/text_form_field.dart';
+import 'package:space_imoveis/pages/Chat/ChatService/ChatApi.dart';
 import 'package:space_imoveis/pages/RegisterPages/login_page/login_page_controller.dart';
 
 // ignore: must_be_immutable
@@ -111,7 +113,7 @@ class LoginPage extends StatelessWidget {
                                               padding: EdgeInsets.fromLTRB(35,10,35,10),
                                               decoration: BoxDecoration(
                                                 borderRadius: BorderRadius.circular(10),
-                                                color: controller.myGlobalController.color3
+                                                color: controller.myGlobalController.color
                                               ),
                                               child: Text('Entrar',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),),
                                             ),
@@ -126,6 +128,8 @@ class LoginPage extends StatelessWidget {
                               ),
 
                               NoAccount(),
+
+
                          
                             ],
                           )

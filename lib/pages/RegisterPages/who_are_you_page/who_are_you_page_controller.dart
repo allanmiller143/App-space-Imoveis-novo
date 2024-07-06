@@ -6,12 +6,12 @@ import 'package:get/get.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 
 class WhoAreYouPageController extends GetxController {
-  String selectedUserType = 'Tipo';
+  RxString selectedUserType = ''.obs;
   late MyGlobalController myGlobalController;
 
 
   nextStep(){
-    if(selectedUserType == 'Tipo'){
+    if(selectedUserType.value == ''){
       Get.snackbar(
         "Aviso",
         'Antes de prosseguir selecione um tipo de usuário',

@@ -29,7 +29,7 @@ class CustomDropdownButton extends StatelessWidget {
         dropdownSearchDecoration: InputDecoration(
           focusColor: const Color.fromARGB(0, 0, 0, 0),
           filled: true,
-          fillColor: const Color.fromARGB(255, 243, 243, 243), // Define o fundo branco
+          fillColor: Color.fromARGB(12, 0, 0, 0),
           constraints: BoxConstraints(maxHeight: 40),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Color.fromARGB(0, 0, 0, 0),width: 0.5),
@@ -45,9 +45,13 @@ class CustomDropdownButton extends StatelessWidget {
             fontWeight: FontWeight.w500,
             fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
           ),
+          floatingLabelStyle: TextStyle(
+            color: Color.fromARGB(255, 57, 57, 57),
+            fontSize: 12,
+            fontWeight: FontWeight.w500
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
-
           ),
           contentPadding: EdgeInsets.fromLTRB(12, 0, 0, 0),
         ),

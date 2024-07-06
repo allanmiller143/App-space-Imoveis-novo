@@ -18,8 +18,7 @@ class ConversationItem extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(0,0,0,20),
       child: GestureDetector(
         onTap: () async{
-          mySnackBar('Ainda em desenvolvimento', true);
-          //Get.toNamed('/chat_conversation', arguments: [user]);
+          Get.toNamed('/chat_conversation', arguments: [user]);
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
