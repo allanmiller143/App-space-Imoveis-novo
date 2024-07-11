@@ -70,7 +70,7 @@ class HighligthedPropertyGrid extends StatelessWidget {
             ),
             NumberPaginator(
               initialPage: controller.currentPage.value,
-              numberPages: ((controller.totalItens / 20).ceil()),
+              numberPages: ((controller.totalItens / 8).ceil()),
               onPageChange: (int index) {
                 controller.currentPage.value = index;
                 controller.fetchProperties();

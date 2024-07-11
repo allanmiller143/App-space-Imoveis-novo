@@ -19,7 +19,6 @@ class PropertyDetailCard1Controller extends GetxController with GetTickerProvide
 
   u(){
     update();
-    print('sdfsdfsdfdffgdfg');
   }
 }
 

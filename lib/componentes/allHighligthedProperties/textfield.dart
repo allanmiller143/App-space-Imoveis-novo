@@ -36,10 +36,13 @@ class ManageTextField extends StatelessWidget {
             border: Border.all(color: Color.fromARGB(47, 0, 0, 0), width: 0.3),
           ),
           child: TextField(
+            
             controller: controller,
             onChanged: (value) => controller.text = value,
+            cursorColor: Colors.black,
             decoration: InputDecoration(
               alignLabelWithHint: true,
+              contentPadding: EdgeInsets.fromLTRB(10, 5, 10, 5),
               filled: true,
               fillColor: Color.fromARGB(255, 255, 255, 255),
               constraints: BoxConstraints(maxHeight: 40),

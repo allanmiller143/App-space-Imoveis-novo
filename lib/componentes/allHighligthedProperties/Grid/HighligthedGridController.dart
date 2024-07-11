@@ -48,7 +48,7 @@ class HighligthedGridController extends GetxController {
 
     print('${ahpc.propertyType.value}');
     try {
-      var response = await put('properties/filter?page=${currentPage.value + 1}&limit=20',formJson);
+      var response = await put('properties/filter?page=${currentPage.value + 1}&limit=8',formJson);
       if (response['status'] == 200 || response['status'] == 201) {
         properties.value = response['data']['properties'];
         totalItens.value = response['data']['pagination']['total'];

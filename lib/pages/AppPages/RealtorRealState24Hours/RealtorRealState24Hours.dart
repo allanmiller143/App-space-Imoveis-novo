@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:space_imoveis/componentes/global_components/Grid/grid.dart';
 import 'package:space_imoveis/componentes/global_components/app_bar.dart'; // Certifique-se de que este caminho está correto
 import 'package:space_imoveis/componentes/global_components/drawer.dart';
 import 'package:space_imoveis/componentes/global_components/home_banner_sliders.dart';
-import 'package:space_imoveis/componentes/global_components/home_carousel_slider/home_carousel_slider.dart';
-import 'package:space_imoveis/componentes/global_components/my_button.dart';
-import 'package:space_imoveis/componentes/home/filterCards.dart';
-import 'package:space_imoveis/componentes/home/realtorRealStates24hButton.dart';
-import 'package:space_imoveis/componentes/realtors24hours/card.dart';
 import 'package:space_imoveis/componentes/realtors24hours/grid.dart';
+import 'package:space_imoveis/componentes/realtors24hours/menu.dart';
+import 'package:space_imoveis/pages/AppPages/RealtorRealState24Hours/RealtorRealState24HoursController.dart';
 import 'package:space_imoveis/pages/AppPages/home/home_controller.dart';
 
 // ignore: must_be_immutable
-class Home extends StatelessWidget {
-  Home({Key? key}) : super(key: key);
-  var controller = Get.put(HomeController());
+class RealtorRealState24Hours extends StatelessWidget {
+  RealtorRealState24Hours({Key? key}) : super(key: key);
+  var controller = Get.put(RealtorRealState24HoursController());
 
   Future<void> _refreshPage() async {
     await controller.init();
@@ -51,17 +47,9 @@ class Home extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               HomeBannerCarousel(),
-                              Corretores24hWidget(
-                                onTap: () {
-                                  Get.toNamed('/realtor_real_state_24_hours');
-                                },
-                              ),
-                              SizedBox(height: 10),
-                              FiltersCards(),
-                              SizedBox(height: 10),
-                              PropertyList(),
-                              SizedBox(height: 10),
-                              PropertyGrid(title: 'Encontre o imóvel ideal',),
+                              
+                              CustomMenuExample(),
+                              
                             ],
                           ),
                         ),

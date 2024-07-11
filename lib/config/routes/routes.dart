@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:space_imoveis/pages/AppPages/RealtorRealState24Hours/RealtorRealState24Hours.dart';
 import 'package:space_imoveis/pages/AppPages/allHighligthedProperties/allHighligthedProperties.dart';
 import 'package:space_imoveis/pages/Chat/ChatPages/Conversation/Conversation.dart';
 import 'package:space_imoveis/pages/DashBoardPages/EditPropertyPage/EditPropertyPage.dart';
@@ -54,9 +55,33 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/edit_property', page: () => EditProperty(),transition: Transition.rightToLeft,transitionDuration: const Duration(milliseconds: 400),preventDuplicates: false),
         GetPage(name: '/edit_property', page: () => EditProperty(),transition: Transition.rightToLeft,transitionDuration: const Duration(milliseconds: 400),preventDuplicates: false),
         GetPage(name: '/chat_conversation', page: () => ConversationPage(),transition: Transition.rightToLeft,transitionDuration: const Duration(milliseconds: 400),preventDuplicates: false),
+        GetPage(name: '/realtor_real_state_24_hours', page: () => RealtorRealState24Hours(),transition: Transition.rightToLeft,transitionDuration: const Duration(milliseconds: 400),preventDuplicates: false),
 
 
       ],
     );
   }
 }
+
+// class SplashPage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     // Verifique se há um link profundo ao iniciar o aplicativo
+//     WidgetsBinding.instance.addPostFrameCallback((_) {
+//       handleDeepLink();
+//     });
+
+//     return Scaffold(
+//       body: Center(child: Text('Splash Page')),
+//     );
+//   }
+
+//   void handleDeepLink() {
+//     // Obtenha o link profundo e navegue para a página apropriada
+//     final uri = Uri.base;
+//     if (uri.scheme == 'myapp' && uri.host == 'property_detail') {
+//       final propertyId = uri.pathSegments[1];
+//       Get.toNamed('/property_detail/$propertyId');
+//     }
+//   }
+// }

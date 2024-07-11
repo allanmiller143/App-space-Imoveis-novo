@@ -51,6 +51,8 @@ class AdvertiserInfoData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double avgRate = double.tryParse(advertiserData['avgRate']) ?? 0.0;
+
     return SizedBox(
       child: GestureDetector(
         onTap: () {
@@ -110,7 +112,7 @@ class AdvertiserInfoData extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(2,0,0,0),
                             child: Text(
-                              advertiserData['type'] == 'realstate'? advertiserData['conpany_name'] : advertiserData['name'],
+                              advertiserData['type'] == 'realstate'? advertiserData['company_name'] : advertiserData['name'],
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
@@ -118,7 +120,9 @@ class AdvertiserInfoData extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Rating(rating: double.parse(advertiserData['avgRate']) * 2),
+                          Rating(
+                            rating: avgRate.isNaN ? 0.0 : avgRate * 2,
+                          ),
                         ],
                       ),
                     )

@@ -23,6 +23,7 @@ class RatingSummaryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     CommentsController cc = Get.put(CommentsController(email));
     MyGlobalController mgc = Get.find();
+    double avgRate = double.tryParse(advertiserData['avgRate']) ?? 0.0;
 
     return Obx(() => cc.loading.value
         ? Center(child: CircularProgressIndicator())
@@ -64,8 +65,8 @@ class RatingSummaryWidget extends StatelessWidget {
                   label: 'Avaliações',
                   labelStyle: TextStyle(fontWeight: FontWeight.w200),
                   averageStyle: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  counter: cc.totalComments.value,
-                  average: double.parse(advertiserData['avgRate']) * 2,
+                  counter: avgRate.isNaN ? 1 : cc.totalComments.value,
+                  average:  avgRate.isNaN ? 0.0 : avgRate * 2,
                   counterFiveStars: 5,
                   counterFourStars: 4,
                   counterThreeStars: 2,

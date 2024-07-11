@@ -13,7 +13,6 @@ class AllFilter extends StatelessWidget {
   final Allhighligthedpropertiescontroller controller = Get.find();
   HighligthedGridController hgc = Get.find();
   // Exemplo de lista de opções para os dropdowns
-  final List<String> cities = ['Recife', 'São Paulo', 'Rio de Janeiro', 'Belo Horizonte'];
   RxBool commodities = false.obs;
 
 

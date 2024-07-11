@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 import 'package:space_imoveis/services/api.dart';
+import 'package:share_plus/share_plus.dart';
 
 class PropertyDetailController extends GetxController {
   late MyGlobalController myGlobalController;
@@ -26,26 +27,33 @@ class PropertyDetailController extends GetxController {
     return formatter.format(number);
   }
 
-init() async {
-  try {
-    var response = await get('properties/$propertyId');
-    print('Response: $response');
-    
-    if (response['status'] == 200 || response['status'] == 201) {
-      Map<String, dynamic> json = {}; // Garantir que é um mapa vazio
-      var clickResponse = await postClick('properties/times-seen/$propertyId', json);
-      print('Click Response: $clickResponse');
+  init() async {
+    try {
+      var response = await get('properties/$propertyId');
+      print('Response: $response');
       
-      property = response['data'];
+      if (response['status'] == 200 || response['status'] == 201) {
+        Map<String, dynamic> json = {}; // Garantir que é um mapa vazio
+        var clickResponse = await postClick('properties/times-seen/$propertyId', json);
+        print('Click Response: $clickResponse');
+        
+        property = response['data'];
 
-    } else {
-      print('Ocorreu um erro inesperado');
+      } else {
+        print('Ocorreu um erro inesperado');
+      }
+    } catch (e) {
+      print('Ocorreu um erro inesperado, tente novamente mais tarde');
     }
-  } catch (e) {
-    print('Ocorreu um erro inesperado, tente novamente mais tarde');
+    return true;
   }
-  return true;
-}
+
+  
+  void sharePropertyLink(BuildContext context) {
+    final String propertyLink = 'https://myapp.com/property_detail/${property['seller']['email']}'; // Substitua pelo seu link
+
+    Share.share('Confira este imóvel: $propertyLink');
+  }
 
 
 

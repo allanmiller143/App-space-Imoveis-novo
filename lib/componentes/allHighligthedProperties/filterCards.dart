@@ -35,7 +35,7 @@ class HighligthedFiltersCards extends StatelessWidget {
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
-                    backgroundColor: Color.fromARGB(255, 4, 46, 56),
+                    backgroundColor: Color.fromARGB(115, 0, 0, 0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(10),
