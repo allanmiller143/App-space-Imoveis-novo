@@ -62,7 +62,10 @@ class _SplashPageState extends State<SplashPage> {
     if (link.pathSegments.contains('property_detail')) {
       final String propertyId = link.pathSegments.last;
       Get.offNamed('/property_detail/$propertyId');
-    } else {
+    } else if(link.pathSegments.contains('advertiser_data')){
+      final String email = link.pathSegments.last;
+      Get.offNamed('/advertiser_data/$email');
+    }else {
       _navigateToInitialPage(isLoggedIn);
     }
   }

@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:space_imoveis/pages/AppPages/advertiser_data/advertiser_data_page_controller.dart';
+import 'package:space_imoveis/pages/AppPages/home/home_controller.dart';
 
 class AdvertiserDataHeader extends StatelessWidget {
   var advertiserData;
@@ -13,6 +15,7 @@ class AdvertiserDataHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AdvertiserDataController adc = Get.find();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,7 +36,13 @@ class AdvertiserDataHeader extends StatelessWidget {
                     color: Color.fromARGB(255, 0, 0, 0),
                   ),
                   onPressed: () {
-                    Get.back();
+                    if(Get.isRegistered<HomeController>()){
+                      print('entrei aqui');
+                      Get.back();
+                    }else{
+                      print('Entrei no else');
+                      Get.offAllNamed('/home');
+                    }  
                   },
                 ),
               ),
@@ -65,7 +74,7 @@ class AdvertiserDataHeader extends StatelessWidget {
                     color: Color.fromARGB(255, 0, 0, 0),
                   ),
                   onPressed: () {
-                    Get.back();
+                    adc.shareAdvertiserLink(context);
                   },
                 ),
               ),
