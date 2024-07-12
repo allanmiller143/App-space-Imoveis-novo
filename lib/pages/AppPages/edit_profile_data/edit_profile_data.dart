@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:space_imoveis/componentes/global_components/Dialogs/informationDialog/information_dialog.dart';
 import 'package:space_imoveis/componentes/global_components/my_button.dart';
 import 'package:space_imoveis/pages/AppPages/edit_profile_data/editPhoto.dart';
 import 'package:space_imoveis/pages/AppPages/edit_profile_data/edit_profile_data_controller.dart';
@@ -19,6 +20,7 @@ class EditProfileDataPage extends StatelessWidget {
             backgroundColor: Color.fromARGB(255, 255, 255, 255),
               appBar: AppBar(
               backgroundColor: controller.myGlobalController.color,
+              toolbarHeight: 60,
               elevation: 0,  
               title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,7 +73,15 @@ class EditProfileDataPage extends StatelessWidget {
                             color: Color.fromARGB(255, 0, 0, 0),
                           ),
                           onPressed: () {
-                            Get.back();
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return MyInformationDialog(
+                                    title: 'Seu Perfil',
+                                    subtitle: 'Atualize suas informações pessoais e mantenha seu perfil sempre atualizado. Aqui, você tem a liberdade de editar seus dados de contato, como número de telefone e endereço de e-mail. ',
+                                  );
+                                },
+                              );
                           },
                         ),
                       ),
