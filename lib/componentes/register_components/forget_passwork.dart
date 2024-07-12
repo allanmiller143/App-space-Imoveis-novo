@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:space_imoveis/componentes/global_components/AlertDialog/alert_header.dart';
+import 'package:space_imoveis/componentes/global_components/Dialogs/AlertDialog/alert_header.dart';
 import 'package:space_imoveis/componentes/global_components/load_widget.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 import 'package:space_imoveis/services/api.dart';

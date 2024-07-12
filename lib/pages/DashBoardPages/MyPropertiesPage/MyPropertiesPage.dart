@@ -4,6 +4,7 @@ import 'package:number_paginator/number_paginator.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:space_imoveis/componentes/DashBoardComponents/Myproperties/manageFilters.dart';
 import 'package:space_imoveis/componentes/DashBoardComponents/Myproperties/managePropertyCard.dart';
+import 'package:space_imoveis/componentes/global_components/Dialogs/informationDialog/information_dialog.dart';
 import 'package:space_imoveis/componentes/inser_property_components/mandatory.dart';
 import 'package:space_imoveis/pages/DashBoardPages/MyPropertiesPage/MyPropertiesPageController.dart';
 
@@ -18,68 +19,77 @@ class MyPropertiesPage extends StatelessWidget {
 
       backgroundColor: Color.fromARGB(0, 9, 47, 70),
       appBar: AppBar(
-              forceMaterialTransparency: true,
-              title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    child: Center(
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.arrow_back_ios_new,
-                            size: 18,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
-                          onPressed: () {
-                            Get.back();
-                          },
-                        ),
-                      ),
-                    
-                  ),
-                ),
-                Text(
-                  'Meus imoveis',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
+          forceMaterialTransparency: true,
+          toolbarHeight: 60,
+          title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
                     color: Color.fromARGB(255, 255, 255, 255),
-                    fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
-                  ),
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                child: Center(
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 18,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                      onPressed: () {
+                        Get.back();
+                      },
                     ),
-                    child: Center(
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.info,
-                            size: 18,
-                            color: Color.fromARGB(255, 0, 0, 0),
-                          ),
-                          onPressed: () {
-                            Get.back();
-                          },
-                        ),
-                      ), 
                   ),
+                
+              ),
+            ),
+            Text(
+              'Meus imoveis',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 255, 255, 255),
+                fontFamily: 'SourceSerif4-VariableFont_opsz,wght',
+              ),
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 255, 255, 255),
                 ),
-              ],
+                child: Center(
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.info,
+                        size: 18,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return MyInformationDialog(
+                                title: 'Seus Imóveis',
+                                subtitle: 'Bem-vindo à sua área de gerenciamento de imóveis! Aqui, você pode facilmente gerenciar, editar e deletar seus imóveis. Aproveite a praticidade e o controle total sobre suas propriedades. Vamos começar?',
+                              );
+                            },
+                          );
+                      },
+                    ),
+                  ), 
+              ),
             ),
-            ),
+          ],
+        ),
+      ),
       body: FutureBuilder(
         future: controller.init(context),
         builder: (BuildContext context, AsyncSnapshot snapshot) {

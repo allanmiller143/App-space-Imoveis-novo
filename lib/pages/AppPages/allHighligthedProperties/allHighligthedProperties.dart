@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/allHighligthedProperties/Grid/HighligthedPropertyGrid.dart';
 import 'package:space_imoveis/componentes/allHighligthedProperties/filterCards.dart';
+import 'package:space_imoveis/componentes/global_components/Dialogs/informationDialog/information_dialog.dart';
 import 'package:space_imoveis/pages/AppPages/allHighligthedProperties/allHighligthedPropertiesController.dart';
 
 // ignore: must_be_immutable
@@ -68,12 +69,20 @@ class AllhighligthedpropertiesPage extends StatelessWidget {
                       child: Center(
                           child: IconButton(
                             icon: Icon(
-                              Icons.share,
+                              Icons.info_outline,
                               size: 18,
                               color: Color.fromARGB(255, 0, 0, 0),
                             ),
                             onPressed: () {
-                              Get.back();
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return MyInformationDialog(
+                                    title: 'Destaques',
+                                    subtitle: 'Encontre os imóveis mais cobiçados pelos nossos clientes na página de imóveis em destaque',
+                                  );
+                                },
+                              );
                             },
                           ),
                         ),
