@@ -5,11 +5,8 @@ import 'package:space_imoveis/componentes/global_components/app_bar.dart'; // Ce
 import 'package:space_imoveis/componentes/global_components/drawer.dart';
 import 'package:space_imoveis/componentes/global_components/home_banner_sliders.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/home_carousel_slider.dart';
-import 'package:space_imoveis/componentes/global_components/my_button.dart';
 import 'package:space_imoveis/componentes/home/filterCards.dart';
 import 'package:space_imoveis/componentes/home/realtorRealStates24hButton.dart';
-import 'package:space_imoveis/componentes/realtors24hours/card.dart';
-import 'package:space_imoveis/componentes/realtors24hours/grid.dart';
 import 'package:space_imoveis/pages/AppPages/home/home_controller.dart';
 
 // ignore: must_be_immutable

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/global_components/app_bar.dart'; // Certifique-se de que este caminho está correto
 import 'package:space_imoveis/componentes/global_components/drawer.dart';
 import 'package:space_imoveis/componentes/global_components/home_banner_sliders.dart';
-import 'package:space_imoveis/componentes/realtors24hours/grid.dart';
 import 'package:space_imoveis/componentes/realtors24hours/menu.dart';
 import 'package:space_imoveis/pages/AppPages/RealtorRealState24Hours/RealtorRealState24HoursController.dart';
 import 'package:space_imoveis/pages/AppPages/home/home_controller.dart';

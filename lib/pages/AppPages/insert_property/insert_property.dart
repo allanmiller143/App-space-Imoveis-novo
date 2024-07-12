@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:space_imoveis/componentes/global_components/Dialogs/informationDialog/information_dialog.dart';
 import 'package:space_imoveis/componentes/inser_property_components/horizontal_stepper.dart';
 import 'package:space_imoveis/pages/AppPages/insert_property/insert_property_controller.dart';
 
@@ -21,6 +22,7 @@ class InsertProperty extends StatelessWidget {
             extendBodyBehindAppBar: false,
             appBar: AppBar(
               backgroundColor: controller.myGlobalController.color,
+              toolbarHeight: 60,
               elevation: 0,  
               title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +75,15 @@ class InsertProperty extends StatelessWidget {
                             color: Color.fromARGB(255, 0, 0, 0),
                           ),
                           onPressed: () {
-                            Get.back();
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return MyInformationDialog(
+                                    title: 'Destaques',
+                                    subtitle: 'Bem-vindo à página de inserção de imóveis! Aqui você pode adicionar detalhes completos sobre seu imóvel, tornando-o visível para potenciais compradores ou inquilinos. Compartilhe as características únicas e os detalhes essenciais para destacar seu imóvel da melhor forma possível.',  
+                                  );
+                                },
+                              );
                           },
                         ),
                       ),

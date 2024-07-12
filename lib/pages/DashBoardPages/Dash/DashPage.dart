@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/DashBoardComponents/Insights/chats.dart';
 import 'package:space_imoveis/componentes/DashBoardComponents/Insights/insightCards.dart';
+import 'package:space_imoveis/componentes/global_components/Dialogs/informationDialog/information_dialog.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/card.dart';
 import 'package:space_imoveis/pages/DashBoardPages/Dash/DashPageController.dart';
 
@@ -16,7 +17,7 @@ class DashPage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: controller.myGlobalController.color,
-        toolbarHeight: 80,
+        toolbarHeight: 60,
               title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,7 +70,15 @@ class DashPage extends StatelessWidget {
                             color: Color.fromARGB(255, 0, 0, 0),
                           ),
                           onPressed: () {
-                            Get.back();
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return MyInformationDialog(
+                                  title: 'Destaques',
+                                  subtitle: 'Descubra informações detalhadas e análises abrangentes sobre seus imóveis, incluindo métricas como visualizações, interessados e outras estatísticas relevantes. Otimize suas estratégias de mercado e tome decisões informadas com base nos insights fornecidos aqui',
+                                );
+                              },
+                            );
                           },
                         ),
                       ), 

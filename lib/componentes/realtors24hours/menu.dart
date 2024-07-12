@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:space_imoveis/componentes/allHighligthedProperties/allHighligthedPropertiesFilter.dart';
 import 'package:space_imoveis/componentes/realtors24hours/filters.dart';
 import 'package:space_imoveis/componentes/realtors24hours/grid.dart';
 import 'package:space_imoveis/componentes/realtors24hours/realState/RealStateFilter.dart';

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:number_paginator/number_paginator.dart';
-import 'package:space_imoveis/componentes/global_components/Grid/card.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/loading_card.dart';
 import 'package:space_imoveis/componentes/realtors24hours/card.dart';
 import 'package:space_imoveis/componentes/realtors24hours/controller.dart';

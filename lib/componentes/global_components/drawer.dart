@@ -112,34 +112,34 @@ class MyDrawer extends StatelessWidget {
               Get.toNamed('/main_dash');
             },
           ),          
-          ListTile(
-            leading: Icon(Icons.favorite,color: myGlobalController.color,),
-            title: const Text(
-              'Favoritos',
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 13,
-                fontWeight: FontWeight.w300
-              ),
-            ),
-            onTap: () {
+          // ListTile(
+          //   leading: Icon(Icons.favorite,color: myGlobalController.color,),
+          //   title: const Text(
+          //     'Favoritos',
+          //     style: const TextStyle(
+          //       color: Colors.black,
+          //       fontSize: 13,
+          //       fontWeight: FontWeight.w300
+          //     ),
+          //   ),
+          //   onTap: () {
               
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.photo,color: myGlobalController.color,),
-            title: const Text(
-              'Inserir Foto de Perfil',
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 13,
-                fontWeight: FontWeight.w300
-              ),
-            ),
-            onTap: () {
+          //   },
+          // ),
+          // ListTile(
+          //   leading: Icon(Icons.photo,color: myGlobalController.color,),
+          //   title: const Text(
+          //     'Inserir Foto de Perfil',
+          //     style: const TextStyle(
+          //       color: Colors.black,
+          //       fontSize: 13,
+          //       fontWeight: FontWeight.w300
+          //     ),
+          //   ),
+          //   onTap: () {
 
-            },
-          ),
+          //   },
+          // ),
           ListTile(
             leading: Icon(Icons.person,color: myGlobalController.color,),
             title: const Text(
