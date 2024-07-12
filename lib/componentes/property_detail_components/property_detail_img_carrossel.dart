@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
+import 'package:space_imoveis/pages/AppPages/home/home_controller.dart';
 import 'package:space_imoveis/pages/AppPages/property_detail_page/property_detail_page_controller.dart';
 
 class PropertyDetailImgCarrossel extends StatefulWidget {
@@ -69,7 +70,13 @@ class _PropertyDetailImgCarrosselState extends State<PropertyDetailImgCarrossel>
                                   color: Color.fromARGB(255, 255, 255, 255),
                                 ),
                                 onPressed: () {
-                                  Get.back();
+                                  if(Get.isRegistered<HomeController>()){
+                                      print('entrei aqui');
+                                      Get.back();
+                                  }else{
+                                    print('Entrei no else');
+                                    Get.offAllNamed('/home');
+                                  }          
                                 },
                               ),
                             ),

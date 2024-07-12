@@ -22,14 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
 
-            <!-- Deep Link Intent Filter -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <!-- Defina o esquema e o host para o link profundo -->
-                <data android:scheme="https" android:host="myapp.com" android:pathPrefix="/property_detail" />
+            <meta-data android:name="Space-imoveis" android:value="true"/>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="spaceimoveis.com.br"/>
+                <data android:scheme="https" android:host="spaceimoveis.com.br"/>
             </intent-filter>
 
         </activity>

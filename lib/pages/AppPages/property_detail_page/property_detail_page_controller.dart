@@ -50,8 +50,7 @@ class PropertyDetailController extends GetxController {
 
   
   void sharePropertyLink(BuildContext context) {
-    final String propertyLink = 'https://myapp.com/property_detail/${property['seller']['email']}'; // Substitua pelo seu link
-
+    final String propertyLink = 'https://spaceimoveis.com.br/property_detail/${propertyId}';
     Share.share('Confira este imóvel: $propertyLink');
   }
 
