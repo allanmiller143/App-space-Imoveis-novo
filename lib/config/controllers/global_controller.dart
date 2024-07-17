@@ -5,6 +5,7 @@ class MyGlobalController extends GetxController {
   var userInfo;
   RxBool internet = true.obs;
   late String token;
+  late String phoneToken; 
   RxInt counter = 0.obs;
   RxList<dynamic> userFavorites = <dynamic>[].obs;
   var color = Color.fromARGB(255, 9, 47, 70);

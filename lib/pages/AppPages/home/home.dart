@@ -8,6 +8,7 @@ import 'package:space_imoveis/componentes/global_components/home_carousel_slider
 import 'package:space_imoveis/componentes/home/filterCards.dart';
 import 'package:space_imoveis/componentes/home/realtorRealStates24hButton.dart';
 import 'package:space_imoveis/pages/AppPages/home/home_controller.dart';
+import 'package:space_imoveis/services/notifications/firebase_notification.dart';
 
 // ignore: must_be_immutable
 class Home extends StatelessWidget {

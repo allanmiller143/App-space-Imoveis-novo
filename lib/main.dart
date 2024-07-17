@@ -7,6 +7,7 @@ import 'package:space_imoveis/config/routes/routes.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/firebase_options.dart';
 import 'package:space_imoveis/pages/Chat/ChatService/ChatApi.dart';
+import 'package:space_imoveis/services/notifications/firebase_notification.dart';
 
 
 void main() async {
@@ -17,6 +18,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseNotification();
+
   runApp(const MyApp()); // rodar a aplicação
 }
+
 

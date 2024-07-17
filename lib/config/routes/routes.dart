@@ -19,7 +19,8 @@ import 'package:space_imoveis/pages/RegisterPages/splash_page/splash_page.dart';
 import 'package:space_imoveis/pages/RegisterPages/who_are_you_page/who_are_you_page.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  
+  const MyApp({super.key,chatId});
 
   @override
   Widget build(BuildContext context) {
