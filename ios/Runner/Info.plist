@@ -79,5 +79,8 @@
 	<string>We need access to your photo library to select images.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera to take photos.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Preciso de acesso para mandar audios no chat Proprio do app</string>
+
 	</dict>
 </plist>

@@ -7,7 +7,7 @@ import 'package:space_imoveis/pages/DashBoardPages/Dash/DashPage.dart';
 import 'package:space_imoveis/pages/DashBoardPages/MyPropertiesPage/MyPropertiesPage.dart';
 
 class PrincipaAppController extends GetxController {
-  RxInt opcaoSelecionada = 0.obs;
+  RxInt opcaoSelecionada = 2.obs;
   Color corItemSelecionado = Color.fromARGB(255, 255, 255, 255);
   Color corItemNaoSelecionado = Color.fromARGB(255, 115, 124, 136);
   MyGlobalController myGlobalController = Get.find();

@@ -9,6 +9,10 @@ class Avatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 8),
+      decoration: BoxDecoration(
+        color: Colors.transparent, // Fundo transparente
+        shape: BoxShape.circle,
+      ),
       child: CircleAvatar(
         backgroundImage: NetworkImage(imageUrl),
         radius: 16,
@@ -22,32 +26,37 @@ class ChatMessageReceiverWidget extends StatelessWidget {
   final String horaMinuto;
   final String url;
 
-  const ChatMessageReceiverWidget({Key? key, required this.message, required this.horaMinuto, required this.url}) : super(key: key);
+  const ChatMessageReceiverWidget({
+    Key? key,
+    required this.message,
+    required this.horaMinuto,
+    required this.url,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double messageWidth = screenWidth * 0.7; // 70% da largura da tela
+
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-      child: Container(
-        margin: EdgeInsets.only(right: MediaQuery.of(context).size.width / 3),
-        padding: const EdgeInsets.fromLTRB(8,8,8,4),
-        alignment: Alignment.bottomLeft,
-        decoration: const BoxDecoration(
-          color: Color(0xfff5f5f5),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
-            bottomRight: Radius.circular(10),
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Avatar(
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: EdgeInsets.only(right: 5),
+            child: Avatar(
               imageUrl: url,
             ),
-            SizedBox(width: 5),
-            Expanded(
+          ),
+          SizedBox(
+            width: messageWidth, // Define a largura do container da mensagem
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(8,4,8,4),
+              decoration: BoxDecoration(
+                color: Color(0xfff5f5f5), // Cor de fundo cinza para o container da mensagem
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -59,7 +68,6 @@ class ChatMessageReceiverWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        textAlign: TextAlign.end,
                         horaMinuto,
                         style: TextStyle(fontSize: 10, color: Colors.grey),
                       ),
@@ -68,72 +76,77 @@ class ChatMessageReceiverWidget extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 }
-
 
 class ChatMessageSenderWidget extends StatelessWidget {
   final String message;
   final String url;
   final String horaMinuto;
 
-  const ChatMessageSenderWidget({Key? key, required this.message, required this.horaMinuto, required this.url}) : super(key: key);
+  const ChatMessageSenderWidget({
+    Key? key,
+    required this.message,
+    required this.horaMinuto,
+    required this.url,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
-      child: Stack(
-          children:[ 
-            Container(
-            margin: EdgeInsets.only(left: MediaQuery.of(context).size.width / 3),
-            padding: const EdgeInsets.all(8),
-            alignment: Alignment.bottomLeft,
-            decoration: const BoxDecoration(
-              color: Color(0xfff0f8ff),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
-              ),
-            ),
-            child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: 
+    double screenWidth = MediaQuery.of(context).size.width;
+    double messageWidth = screenWidth * 0.7; // 70% da largura da tela
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: messageWidth,
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(8,4,8,4),
+        
+                  decoration: BoxDecoration(
+                    color: Color(0xfff5f5f5), // Cor de fundo cinza para o container da mensagem
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Text(
                         message,
-                        style: const TextStyle(),
-                        textAlign: TextAlign.start,
+                        style: TextStyle(fontSize: 14),
                       ),
-                ),
-                SizedBox(width: 5),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0,0,0,0),
-                  child: Avatar(
-                    imageUrl: url,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            horaMinuto,
+                            style: TextStyle(fontSize: 10, color: Colors.grey),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-                
-              ],
-            ),
+              ),
+              SizedBox(width: 5),
+              Container(
+                child: Avatar(
+                  imageUrl: url,
+                ),
+              ),
+            ],
           ),
-          Positioned(
-            bottom: 4,
-            right: 8,
-            child: Text(
-              horaMinuto,
-              style: TextStyle(fontSize: 10, color: Colors.grey),
-            ),
-          ),
-        ]
-      ),
+        ),
+      ],
     );
   }
 }

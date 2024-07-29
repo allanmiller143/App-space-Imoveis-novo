@@ -1,4 +1,8 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
@@ -80,7 +84,69 @@ class ChatService extends GetxService {
       print('Chat ID not found.');
     }
   }
+
+void sendImg(List<XFile> listImgs) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? chatId = prefs.getString('chatId');
+  MyGlobalController myGlobalController = Get.find();
+  String email = myGlobalController.userInfo['email'];
+
+  for (var img in listImgs) {
+    // Convert XFile to File
+    File file = File(img.path);
+    
+    // Read the file bytes
+    List<int> fileBytes = await file.readAsBytes();
+    
+    // Encode the file bytes to Base64
+    String base64File = base64Encode(fileBytes);
+    
+    // Prepare the data to be sent
+    final data = { 
+      'email': email,
+      'chatId': chatId,
+      'file': base64File, // Use Base64 encoded string
+      'text': 'teste',
+      'type': 'image',
+      'fileName': img.name,
+      'contentType': 'image/jpeg', // Ensure this matches the actual content type
+    };
+
+    // Emit socket event with the Base64 encoded file bytes
+    socket.emit('upload', data);
+  }
 }
+
+void sendAudio() async {
+  final pathToReadAudio = 'audio.aac';
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? chatId = prefs.getString('chatId');
+  MyGlobalController myGlobalController = Get.find();
+  String email = myGlobalController.userInfo['email'];
+
+  // Lendo o arquivo de áudio
+  File audioFile = File(pathToReadAudio);
+  Uint8List audioBytes = await audioFile.readAsBytes();
+
+  // Convertendo o áudio para ArrayBuffer (Uint8List é basicamente um ArrayBuffer em Dart)
+  String audioBase64 = base64Encode(audioBytes);
+
+  final data = {
+    'email': email,
+    'chatId': chatId,
+    'file': audioBase64,
+    'text': 'teste',
+    'type': 'audio',
+    'fileName': 'audio.aac',
+    'contentType': 'audio/aac',
+  };
+
+
+
+  socket.emit('upload', data);
+}
+
 
 Future<Map<String, dynamic>> postChat(String route, var data, {String token = ''}) async {
   final url = Uri.parse('$URL$route');
@@ -110,5 +176,5 @@ Future<Map<String, dynamic>> postChat(String route, var data, {String token = ''
     };
   }
 }
-
+}
 

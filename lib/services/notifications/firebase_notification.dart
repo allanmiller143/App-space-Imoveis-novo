@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:space_imoveis/config/controllers/global_controller.dart';
 import 'package:space_imoveis/services/notifications/firebase_credentials.dart';
 
 class FirebaseNotification {
@@ -16,7 +18,8 @@ class FirebaseNotification {
   Future<void> initMessaging() async {
     await Firebase.initializeApp();
     phoneToken = await _firebaseMessaging.getToken() ?? '';
-    print('phone token: $phoneToken');
+    MyGlobalController mgc = Get.find();
+    mgc.phoneToken = phoneToken;
   }
 
   Future<AccessToken> getAccessToken() async {

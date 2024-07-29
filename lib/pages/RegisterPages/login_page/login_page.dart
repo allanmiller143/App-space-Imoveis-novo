@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
         init: LoginPageController(),
         builder: (_) {
           return Scaffold(
-            backgroundColor: controller.myGlobalController.color2,
+            backgroundColor: const Color.fromARGB(255, 247, 247, 247),
             body: FutureBuilder(
               future: controller.init(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {

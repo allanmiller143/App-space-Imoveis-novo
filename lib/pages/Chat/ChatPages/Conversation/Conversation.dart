@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart'; // Import the intl package
 import 'package:space_imoveis/pages/Chat/ChatPages/Conversation/ConversationController.dart';
 import 'package:space_imoveis/pages/Chat/Components/Message.dart';
+import 'package:space_imoveis/pages/Chat/Components/Messages/AudioMessage/AudioMessageReceiver.dart';
+import 'package:space_imoveis/pages/Chat/Components/Messages/AudioMessage/AudioMessageSender.dart';
+import 'package:space_imoveis/pages/Chat/Components/Messages/FileMessage/FileMessage.dart';
+import 'package:space_imoveis/pages/Chat/Components/Messages/ImgMessage/ImgMessage.dart';
+import 'package:space_imoveis/pages/Chat/Components/TextSender/TextSender.dart';
 
 class ConversationPage extends StatelessWidget {
   ConversationPage({Key? key}) : super(key: key);
@@ -34,7 +40,7 @@ class ConversationPage extends StatelessWidget {
                             icon: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 14),
                           ),
                           Text(
-                            controller.user['type'] != 'realstate' ?  controller.user['name'] : controller.user['companyName'],
+                            controller.user['type'] != 'realstate' ?  controller.user['name'] : controller.user['company_name'],
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
@@ -47,7 +53,6 @@ class ConversationPage extends StatelessWidget {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                        
                         width: double.infinity,
                         decoration: const BoxDecoration(
                           color: Colors.white,
@@ -59,7 +64,7 @@ class ConversationPage extends StatelessWidget {
                         child: Obx(
                           () => controller.chat_socket_controller.messagesSize.value != -1
                               ? ListView.builder(
-                                  reverse: true, 
+                                  reverse: true,
                                   itemCount: controller.chat_socket_controller.messages.length,
                                   itemBuilder: (context, index) {
                                     final message = controller.chat_socket_controller.messages[index];
@@ -67,10 +72,35 @@ class ConversationPage extends StatelessWidget {
                                         ? message['senderProfile']['url']
                                         : '';
                                     final sender = message['sender'] == controller.myGlobalController.userInfo['email'];
+                                    final messageType = message['type'];
+                                    final messageUrl = message['url'];
+                                    var time = message['createdAt'];
+
+                                    // Convertendo a variável 'time' para hora e minuto no fuso horário do Brasil
+                                    String formattedTime = formatDateToBrazilTime(time);
+
                                     if (sender) {
-                                      return ChatMessageSenderWidget(message: message['text'], horaMinuto: '', url: picture);
+                                      if(messageType == 'text'){
+                                        return ChatMessageSenderWidget(message: message['text'], horaMinuto: formattedTime, url: picture);
+                                      }else if(messageType == 'image'){
+                                        return ChatImgMessageSenderWidget(message: message['text'], horaMinuto: formattedTime, url: picture, imgUrl: messageUrl  );
+                                      }
+                                      else if(messageType == 'audio'){
+                                        return ChatAudioMessageSenderWidget(audioUrl: messageUrl,horaMinuto: formattedTime,url: picture,);                                  
+                                      }else if(messageType == 'file'){
+                                        return ChatFileMessageSenderWidget(fileUrl: messageUrl,horaMinuto: formattedTime,url: picture,fileName: message['fileName']);  
+                                      }
                                     } else {
-                                      return ChatMessageReceiverWidget(message: message['text'], horaMinuto: '', url: picture);
+                                      if(messageType == 'text'){
+                                        return ChatMessageReceiverWidget(message: message['text'], horaMinuto: formattedTime, url: picture);
+                                      }else if(messageType == 'image'){
+                                        return ChatImgMessageReceiverWidget(message: message['text'], horaMinuto: formattedTime, url: picture, imgUrl: messageUrl  );
+                                      }
+                                      else if(messageType == 'audio'){
+                                        return ChatAudioMessageReceiverWidget(audioUrl: messageUrl,horaMinuto: formattedTime,url: picture,);  
+                                      }else if(messageType == 'file'){
+                                        return ChatFileMessageReceiverWidget(fileUrl: messageUrl,horaMinuto: formattedTime,url: picture,fileName: message['fileName']);  
+                                      }
                                     }
                                   },
                                 )
@@ -78,61 +108,7 @@ class ConversationPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      color: controller.myGlobalController.color,
-                      padding: const EdgeInsets.all(10),
-                      child: Material(
-                        elevation: 2,
-                        borderRadius: BorderRadius.circular(5),
-                        child: Container(
-                          height: 35,
-                          margin: const EdgeInsets.fromLTRB(10,0,0,0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: const Color.fromARGB(137, 255, 255, 255),
-                          ),
-                          child: 
-                            Expanded(
-                              child: TextFormField(
-                                controller: controller.newMessage,
-                                cursorColor: controller.myGlobalController.color3,
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.fromLTRB(0, 0, 0,18),
-                                  hintText: 'Escreva uma mensagem',
-                                  hintStyle: TextStyle(
-                                    fontSize: 12,
-                                    color: controller.myGlobalController.color3,
-                                  ),
-                                  border: InputBorder.none,
-                                  suffixIcon: Container(
-                                    decoration: BoxDecoration(
-                                      color: controller.myGlobalController.color3,
-                                      borderRadius: BorderRadius.only(
-                                        topRight:   Radius.circular(5),
-                                        bottomRight: Radius.circular(5),
-                                      )
-                                    ),
-                                    child: IconButton(
-                                      iconSize: 15,
-                                      color: const Color.fromARGB(255, 255, 255, 255),
-                                      onPressed: () {
-                                        final message = controller.newMessage.text.trim();
-                                        if (message.isNotEmpty) {
-                                          controller.sendMessage(message);
-                                          controller.newMessage.clear();
-                                        }
-                                      },
-                                      icon: const Icon(Icons.send),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            
-                          
-                        ),
-                      ),
-                    ),
+                    ChatTextSender(),
                   ],
                 ),
               );
@@ -149,5 +125,12 @@ class ConversationPage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  // Function to convert time to Brazil time zone and format it
+  String formatDateToBrazilTime(String time) {
+    DateTime dateTime = DateTime.parse(time).toLocal(); // Parse and convert to local time
+    var brTime = dateTime.toUtc().add(Duration(hours: -3)); // Adjust for Brazil time zone (UTC-3)
+    return DateFormat('HH:mm').format(brTime); // Format to hour and minute
   }
 }

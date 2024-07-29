@@ -18,6 +18,7 @@ class ConversationItem extends StatelessWidget {
       child: GestureDetector(
         onTap: () async{
           Get.toNamed('/chat_conversation', arguments: [user]);
+          print(user);
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

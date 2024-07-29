@@ -53,7 +53,7 @@ class Home extends StatelessWidget {
                                   Get.toNamed('/realtor_real_state_24_hours');
                                 },
                               ),
-                              SizedBox(height: 10),
+                              SizedBox(height: 10),                              
                               FiltersCards(),
                               SizedBox(height: 10),
                               PropertyList(),

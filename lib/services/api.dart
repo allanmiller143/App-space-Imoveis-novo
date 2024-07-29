@@ -7,7 +7,6 @@ import 'package:image_picker/image_picker.dart';
 String URL = 'https://spaceimoveis-api-8lin.onrender.com/';
 
 
-
 get(String route, {String? token}) async {
   final url = Uri.parse('$URL$route');
 
