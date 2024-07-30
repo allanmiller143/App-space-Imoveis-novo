@@ -198,39 +198,74 @@ class SignUpPageController extends GetxController {
         }else{
           formData = {'name':name.text,'email':email.text,'password':password.text,'phone':phone.text,'rg':rg.text,'cep':cep.text,'cpf':cpf.text,'address':street.text,'house_number':number.text,'city':city.text,'district':neighborhood.text,'state':uf.text};
         }
-        print(formData);
 
-        var response = await postFormData(route, formData,'');
-        if (response['status'] == 200 || response['status'] == 201) { // acabou de criar a conta
-          Map<String,String> data = {'email': email.text,'password': password.text};
-          var loginResponse = await post('login',data);
-          if (loginResponse['status'] == 200 || loginResponse['status'] == 201) {
-            myGlobalController.userInfo = loginResponse['body']['user'];
-            myGlobalController.token = loginResponse['body']['token'];
-            myGlobalController.userFavorites.value = [];
-            final SharedPreferences prefs = await SharedPreferences.getInstance();
-            await prefs.setString('token', loginResponse['body']['token']);
-            await prefs.setString('user', jsonEncode(loginResponse['body']['user']));
-            await prefs.setString('favorites', jsonEncode([]));
+        if(myGlobalController.userInfo != null && myGlobalController.userInfo['type'] != 'client'){
 
+          var response = await postFormData(route, formData,'');
+          if (response['status'] == 200 || response['status'] == 201) { // acabou de criar a conta
+            Map<String,String> data = {'email': email.text,'password': password.text};
+            var loginResponse = await post('login',data);
+            if (loginResponse['status'] == 200 || loginResponse['status'] == 201) {
+              myGlobalController.userInfo = loginResponse['body']['user'];
+              myGlobalController.token = loginResponse['body']['token'];
+              myGlobalController.userFavorites.value = [];
+              final SharedPreferences prefs = await SharedPreferences.getInstance();
+              await prefs.setString('token', loginResponse['body']['token']);
+              await prefs.setString('user', jsonEncode(loginResponse['body']['user']));
+              await prefs.setString('favorites', jsonEncode([]));
 
-            Get.back(); // Fecha o loading
+              Get.back(); // Fecha o loading
 
-            if(whoAreYouController.selectedUserType == 'Proprietário'){
-              Get.offAllNamed('/home');
-            }else{
-              Get.toNamed('/complete_sign_up');
+              if(whoAreYouController.selectedUserType == 'Proprietário'){
+                Get.offAllNamed('/home');
+              }else{
+                Get.toNamed('/complete_sign_up');
+              }
+              
+            } else {
+              Get.back(); // Fecha o loading
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('E-mail ou senha incorreta'),backgroundColor: Color.fromARGB(155, 250, 0, 0),));
             }
-            
           } else {
             Get.back(); // Fecha o loading
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('E-mail ou senha incorreta'),backgroundColor: Color.fromARGB(155, 250, 0, 0),));
+            print(response['body']);
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(' ${response['message'].toString()}'),backgroundColor: Color.fromARGB(155, 250, 0, 0),));
           }
-        } else {
-          Get.back(); // Fecha o loading
-          print(response['body']);
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(' ${response['message'].toString()}'),backgroundColor: Color.fromARGB(155, 250, 0, 0),));
+        }else{
+          var response = await putFormDataA('${route}/elevate/${myGlobalController.userInfo['email']}', formData,myGlobalController.token);
+          if (response['status'] == 200 || response['status'] == 201) { // acabou de criar a conta
+            Map<String,String> data = {'email': email.text,'password': password.text};
+            var loginResponse = await post('login',data);
+            if (loginResponse['status'] == 200 || loginResponse['status'] == 201) {
+              myGlobalController.userInfo = loginResponse['body']['user'];
+              myGlobalController.token = loginResponse['body']['token'];
+              myGlobalController.userFavorites.value = [];
+              final SharedPreferences prefs = await SharedPreferences.getInstance();
+              await prefs.setString('token', loginResponse['body']['token']);
+              await prefs.setString('user', jsonEncode(loginResponse['body']['user']));
+              await prefs.setString('favorites', jsonEncode([]));
+
+              Get.back(); // Fecha o loading
+
+              if(whoAreYouController.selectedUserType == 'Proprietário'){
+                Get.offAllNamed('/home');
+              }else{
+                Get.toNamed('/complete_sign_up');
+              }
+              
+            } else {
+              Get.back(); // Fecha o loading
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('E-mail ou senha incorreta'),backgroundColor: Color.fromARGB(155, 250, 0, 0),));
+            }
+          } else {
+            Get.back(); // Fecha o loading
+            print(response['body']);
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(' ${response['message'].toString()}'),backgroundColor: Color.fromARGB(155, 250, 0, 0),));
+          }
+
         }
+
+
       } on Exception catch (e) {
         Get.back(); // Fecha o loading
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Ocorreu um erro inesperado'),backgroundColor: Color.fromARGB(155, 250, 0, 0),));

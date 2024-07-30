@@ -49,6 +49,7 @@ class WhoAreYouPage extends StatelessWidget {
                                         padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
                                         child: Center(
                                           child: Text(
+                                            controller.myGlobalController.userInfo != null && controller.myGlobalController.userInfo['type'] == 'client' ? 'Eleve Sua conta' :
                                             'Bem vindo!',
                                             style: TextStyle(
                                               color: const Color.fromARGB(255, 255, 255, 255),
