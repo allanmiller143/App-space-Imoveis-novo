@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/pages/Chat/ChatPages/Conversation/ConversationController.dart';
 import 'package:space_imoveis/pages/Chat/Components/Messages/ImgMessage/ImageModal.dart';
-import 'package:space_imoveis/pages/Chat/Components/TextSender/AudioSender.dart';
-import 'package:space_imoveis/pages/Chat/Components/TextSender/SoundPlayer.dart';
+import 'package:space_imoveis/pages/Chat/Components/Messages/AudioMessage/AudioSender.dart';
+import 'package:space_imoveis/pages/Chat/Components/TextSender/FileSender.dart';
+import 'package:space_imoveis/pages/Chat/Components/Messages/AudioMessage/SoundPlayer.dart';
 
 class ChatTextSender extends StatelessWidget {
   ChatTextSender({Key? key}) : super(key: key);
   final recorder  = SoundRecorder();
-
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +36,20 @@ class ChatTextSender extends StatelessWidget {
               child: Icon(Icons.camera_alt_sharp,color: Colors.white),
             ),
           ),
+          FileSender(),
           
           Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
+                  onChanged: (value) =>  {
+                    if(controller.newMessage.text.length == 0 ){
+                      controller.showAudioButtom.value = false
+                    }else{
+                      controller.showAudioButtom.value = true
+                    }
+
+                  } ,
                   controller: controller.newMessage,
                   cursorColor: controller.myGlobalController.color3,
                   maxLines: 4,
@@ -92,34 +101,41 @@ class ChatTextSender extends StatelessWidget {
                 ),
               ),  
             ),
-          GestureDetector(
-              onTap: () {
-                final message = controller.newMessage.text.trim();
-                if (message.isNotEmpty) {
-                  controller.sendMessage(message);
-                  controller.newMessage.clear();
-                }
-              },
-              child: Container(
-                width: 22,
-                height: 22,
-                margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                decoration: BoxDecoration(
-                  color: controller.myGlobalController.color3,
-                  borderRadius: BorderRadius.circular(
-                    50
+            Obx(() => !controller.showAudioButtom.value ? AudioButton() : 
+              
+            
+            
+            GestureDetector(
+                onTap: () {
+                  final message = controller.newMessage.text.trim();
+                  if (message.isNotEmpty) {
+                    controller.sendMessage(message);
+                    controller.newMessage.clear();
+                    controller.showAudioButtom.value = false;
+                  }
+                },
+                child: Container(
+                  width: 22,
+                  height: 22,
+                  margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                  decoration: BoxDecoration(
+                    color: controller.myGlobalController.color3,
+                    borderRadius: BorderRadius.circular(
+                      50
+                    ),
+                  ),
+                  child: Icon(
+                    Icons.send,
+                    color: Colors.white,
+                    size: 12,
+                              
                   ),
                 ),
-                child: Icon(
-                  Icons.send,
-                  color: Colors.white,
-                  size: 12,
-                           
-                ),
-              ),
-            ),
-            AudioButton(),
-            PlayButton()
+              )
+              )
+
+              
+            //PlayButton()
         
         ],
       ),

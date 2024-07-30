@@ -133,15 +133,15 @@ class PropertyCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text(
-                  property['description'],
-                  style: TextStyle(fontSize: 10),
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              //   child: Text(
+              //     property['description'],
+              //     style: TextStyle(fontSize: 10),
+              //     maxLines: 3,
+              //     overflow: TextOverflow.ellipsis,
+              //   ),
+              // ),
               property['property_type'] == 'Terreno'
                   ? SizedBox()
                   : Padding(

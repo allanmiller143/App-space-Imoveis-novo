@@ -66,7 +66,8 @@ class MyDrawer extends StatelessWidget {
         
             ),
             accountName:  Text(
-              myGlobalController.userInfo['type'] == 'realstate' ? myGlobalController.userInfo['company_name'] : myGlobalController.userInfo['name'],
+              ((myGlobalController.userInfo != null && myGlobalController.userInfo['type'] != 'client')) ?
+              myGlobalController.userInfo['type'] == 'realstate' ? myGlobalController.userInfo['company_name'] : myGlobalController.userInfo['name']: '',
               style: const TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
                 fontSize: 20,
@@ -74,7 +75,9 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             accountEmail:  Text(
-              myGlobalController.userInfo['email'],
+              ((myGlobalController.userInfo != null && myGlobalController.userInfo['type'] != 'client')) ?
+              myGlobalController.userInfo['email']:
+              '',
               style: const TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
                 fontSize: 13,

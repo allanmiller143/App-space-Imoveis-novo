@@ -88,7 +88,7 @@ class PropertyCard2 extends StatelessWidget {
                     children:[ 
                       Container(
                         width: double.infinity,
-                        height:98,
+                        height:120,
                         child: ClipRRect(
                           borderRadius: BorderRadius.vertical(top: Radius.circular(5)),
                           child: Image.network(
@@ -135,15 +135,15 @@ class PropertyCard2 extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: Text(
-                      property['description'],
-                      style: TextStyle(fontSize: 10,wordSpacing: 0.2),
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  //   child: Text(
+                  //     property['description'],
+                  //     style: TextStyle(fontSize: 10,wordSpacing: 0.2),
+                  //     maxLines: 3,
+                  //     overflow: TextOverflow.ellipsis,
+                  //   ),
+                  // ),
 
                   property['property_type'] == 'Terreno' ? SizedBox() :
                   Padding(

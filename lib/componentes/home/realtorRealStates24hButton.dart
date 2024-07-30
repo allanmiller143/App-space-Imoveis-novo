@@ -34,7 +34,7 @@ class Corretores24hWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.support_agent, color: Colors.white, size: 40),
+            Icon(Icons.support_agent, color: Colors.white, size: 35),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -42,7 +42,7 @@ class Corretores24hWidget extends StatelessWidget {
                   "Corretores 24h",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -50,7 +50,7 @@ class Corretores24hWidget extends StatelessWidget {
                   "Fale agora com um corretor disponível",
                   style: TextStyle(
                     color: Colors.white70,
-                    fontSize: 14,
+                    fontSize: 13,
                   ),
                 ),
               ],

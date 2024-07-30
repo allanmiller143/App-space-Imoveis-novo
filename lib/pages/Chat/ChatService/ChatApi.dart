@@ -1,11 +1,13 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
+import 'package:space_imoveis/pages/Chat/ChatPages/Conversation/ConversationController.dart';
 import 'dart:async';
 import 'dart:convert'; // Para usar jsonEncode
 import 'package:space_imoveis/services/api.dart';
@@ -110,6 +112,7 @@ void sendImg(List<XFile> listImgs) async {
       'type': 'image',
       'fileName': img.name,
       'contentType': 'image/jpeg', // Ensure this matches the actual content type
+      'platform' : 'mobile'
     };
 
     // Emit socket event with the Base64 encoded file bytes
@@ -117,13 +120,46 @@ void sendImg(List<XFile> listImgs) async {
   }
 }
 
+void sendFile(RxList<PlatformFile> selectedFiles) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? chatId = prefs.getString('chatId');
+    MyGlobalController myGlobalController = Get.find();
+    String email = myGlobalController.userInfo['email'];
+
+    for (var file in selectedFiles) {
+      // Read the file bytes
+      File localFile = File(file.path!);
+      List<int> fileBytes = await localFile.readAsBytes();
+      
+      // Encode the file bytes to Base64
+      String base64File = base64Encode(fileBytes);
+      
+      // Prepare the data to be sent
+      final data = {
+        'email': email,
+        'chatId': chatId,
+        'file': base64File, // Use Base64 encoded string
+        'text': 'teste',
+        'type': 'file', // Change to 'file' for document files
+        'fileName': file.name,
+        'contentType': file.extension, // Ensure this matches the actual content type
+        'platform' : 'mobile'
+      };
+
+      socket.emit('upload', data);
+    }
+  }
+
+
 void sendAudio() async {
-  final pathToReadAudio = 'audio.aac';
+  ConversationController conversationController = Get.find();
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? chatId = prefs.getString('chatId');
   MyGlobalController myGlobalController = Get.find();
   String email = myGlobalController.userInfo['email'];
+
+  String pathToReadAudio = conversationController.recorder.pathToSaveAudio;
 
   // Lendo o arquivo de áudio
   File audioFile = File(pathToReadAudio);
@@ -140,9 +176,11 @@ void sendAudio() async {
     'type': 'audio',
     'fileName': 'audio.aac',
     'contentType': 'audio/aac',
+    'platform' : 'mobile'
+    
   };
 
-
+  print('to dando o emmit');
 
   socket.emit('upload', data);
 }

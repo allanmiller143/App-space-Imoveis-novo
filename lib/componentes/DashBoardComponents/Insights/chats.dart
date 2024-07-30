@@ -31,7 +31,7 @@ class Charts extends StatelessWidget {
     double intermediate2 = 0.75 * maxValue; // Segundo valor intermediário
 
     return Container(
-      height:175,
+      height: 175,
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -96,6 +96,11 @@ class Charts extends StatelessWidget {
     double maxBarHeight = 100; // Altura máxima da barra
     double barHeight = (value / maxValue) * maxBarHeight; // Altura proporcional à barra mais alta
     MyGlobalController myGlobalController = MyGlobalController();
+
+    // Evitar NaN para barHeight
+    if (barHeight.isNaN || barHeight.isInfinite) {
+      barHeight = 0;
+    }
 
     return GestureDetector(
       onTap: () {

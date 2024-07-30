@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:space_imoveis/pages/Chat/Components/Message.dart';
+import 'package:space_imoveis/pages/Chat/Components/Messages/TextMessage/Message.dart';
 
 class ChatAudioMessageSenderWidget extends StatefulWidget {
   final String horaMinuto;

@@ -36,7 +36,7 @@ class ChatMessageReceiverWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double messageWidth = screenWidth * 0.7; // 70% da largura da tela
+    double messageWidth = screenWidth * 0.6; // 70% da largura da tela
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
@@ -98,7 +98,7 @@ class ChatMessageSenderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double messageWidth = screenWidth * 0.7; // 70% da largura da tela
+    double messageWidth = screenWidth * 0.6; // 70% da largura da tela
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart'; // Import the intl package
 import 'package:space_imoveis/pages/Chat/ChatPages/Conversation/ConversationController.dart';
-import 'package:space_imoveis/pages/Chat/Components/Message.dart';
+import 'package:space_imoveis/pages/Chat/Components/Messages/TextMessage/Message.dart';
 import 'package:space_imoveis/pages/Chat/Components/Messages/AudioMessage/AudioMessageReceiver.dart';
 import 'package:space_imoveis/pages/Chat/Components/Messages/AudioMessage/AudioMessageSender.dart';
 import 'package:space_imoveis/pages/Chat/Components/Messages/FileMessage/FileMessage.dart';

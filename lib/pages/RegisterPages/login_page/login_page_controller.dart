@@ -88,7 +88,7 @@ login(BuildContext context) async {
           Get.back(); // Fecha o loading
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('E-mail ou senha incorreta 0'),
+              content: Text('E-mail ou senha incorreta'),
               backgroundColor: Color.fromARGB(155, 250, 0, 0),
             ),
           );
@@ -98,7 +98,7 @@ login(BuildContext context) async {
         Get.back(); // Fecha o loading
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('E-mail ou senha incorreta 1'),
+            content: Text('E-mail ou senha incorreta'),
             backgroundColor: Color.fromARGB(155, 250, 0, 0),
           ),
         );
@@ -107,7 +107,7 @@ login(BuildContext context) async {
       Get.back(); // Fecha o loading
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('E-mail ou senha incorreta 2'),
+          content: Text('E-mail ou senha incorreta'),
           backgroundColor: Color.fromARGB(155, 250, 0, 0),
         ),
       );
@@ -116,7 +116,7 @@ login(BuildContext context) async {
     Get.back(); // Fecha o loading
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('E-mail ou senha incorreta 3'),
+        content: Text('E-mail ou senha incorreta'),
         backgroundColor: Color.fromARGB(155, 250, 0, 0),
       ),
     );

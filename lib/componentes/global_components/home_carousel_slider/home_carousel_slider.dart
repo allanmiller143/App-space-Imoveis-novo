@@ -4,6 +4,7 @@ import 'package:space_imoveis/componentes/global_components/home_carousel_slider
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/loading_card.dart';
+import 'package:space_imoveis/componentes/global_components/snack_bar.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 
 
@@ -24,7 +25,7 @@ class PropertyCarousel extends StatelessWidget {
         return PropertyCard(property: property);
       },
       options: CarouselOptions(
-        height: 270, // Adjust the height to control the size of the cards
+        height: 250, // Adjust the height to control the size of the cards
         enlargeCenterPage: true,
         autoPlay: false,
         aspectRatio: 16 / 12,
@@ -157,7 +158,11 @@ class PropertyList extends StatelessWidget {
                 SizedBox(width: 15), // Espaço entre os botões
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed('insert_property');
+                    if(controller.myGlobalController.userInfo != null && controller.myGlobalController.userInfo['type'] != 'client'){
+                      Get.toNamed('insert_property');
+                    }else{
+                      mySnackBar('Para anunciar imóvel, cadastre-se', true);
+                    }
                   },
                   child: Container(
                     padding: EdgeInsets.fromLTRB(25, 5, 25, 5),

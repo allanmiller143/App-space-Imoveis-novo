@@ -12,8 +12,6 @@ import 'package:space_imoveis/services/firebase_login.dart';
 class Networks extends StatelessWidget {
   const Networks({super.key});
 
-
-
   googleSignIn(BuildContext context) async {
     try {
       showLoad(context);
