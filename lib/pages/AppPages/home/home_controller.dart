@@ -22,8 +22,15 @@ class HomeController extends GetxController {
     final String? user = prefs.getString('user');
     final String? token = prefs.getString('token');
     final String? userFavorites = prefs.getString('userFavorites');
-    myGlobalController.userInfo = jsonDecode(user!);
-    myGlobalController.token = token!;
+    
+    print(user);
+
+    if(user != null){
+      myGlobalController.userInfo = jsonDecode(user!);
+      myGlobalController.token = token!;
+    }
+
+    
     
     if (userFavorites != null) {
       // Converte a string JSON de volta para uma lista de strings

@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 
-class Corretores24hWidget extends StatelessWidget {
-  final Function onTap;
-  Corretores24hWidget({required this.onTap});
+class SignUpBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    MyGlobalController mgc = Get.find();
+    final MyGlobalController mgc = Get.find();
     return GestureDetector(
-      onTap: () => onTap(),
+      onTap: () {
+       
+        Get.toNamed('/login');
+      },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10.0),
         padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
@@ -32,12 +33,11 @@ class Corretores24hWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.support_agent, color: Colors.white, size: 35),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Corretores 24h",
+                  "Ainda não possui conta?",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -45,7 +45,7 @@ class Corretores24hWidget extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Fale agora com um corretor disponível",
+                  "Clique aqui e cadastre-se!",
                   style: TextStyle(
                     color: Colors.white70,
                     fontSize: 13,
@@ -53,7 +53,7 @@ class Corretores24hWidget extends StatelessWidget {
                 ),
               ],
             ),
-            Icon(Icons.arrow_forward_ios, color: Colors.white, size: 20),
+            Icon(Icons.arrow_drop_down_rounded, color: Colors.white, size: 30),
           ],
         ),
       ),

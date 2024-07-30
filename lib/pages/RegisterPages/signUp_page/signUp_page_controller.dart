@@ -44,6 +44,12 @@ class SignUpPageController extends GetxController {
   init() async {
     myGlobalController = Get.find();
     whoAreYouController = Get.find();
+
+    if(myGlobalController.userInfo != null && myGlobalController.userInfo['type'] == 'client'){
+      name.text = myGlobalController.userInfo['name'];
+      email.text = myGlobalController.userInfo['email'];
+      phone.text = myGlobalController.userInfo['phone'] ?? '';
+    }
     return true;
   }
 
@@ -73,7 +79,7 @@ class SignUpPageController extends GetxController {
       const SizedBox(height: 4),
       whoAreYouController.selectedUserType != 'Imobiliária' ? MySimpleTextFormField(controller: name, hint: 'Nome Completo'):MySimpleTextFormField(controller: name, hint: 'Razão social'),
       const SizedBox(height: 8),
-      MySimpleTextFormField(controller: email, hint: 'E-mail'),
+      MySimpleTextFormField(controller: email, hint: 'E-mail',enable: (myGlobalController.userInfo != null && myGlobalController.userInfo['type'] == 'client') ? false : true),
       const SizedBox(height: 8),
       MySimpleTextFormField(controller: phone, hint: 'Telefone'),
       const SizedBox(height: 8),

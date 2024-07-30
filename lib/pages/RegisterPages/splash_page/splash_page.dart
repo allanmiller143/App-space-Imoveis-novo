@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 import 'package:space_imoveis/pages/AppPages/home/home.dart';
-import 'package:space_imoveis/pages/RegisterPages/login_page/login_page.dart';
 import 'package:uni_links2/uni_links.dart';
+
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
@@ -22,19 +22,19 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> _handleStartupLogic() async {
-    final bool isLoggedIn = await _checkLoginStatus();
+    await _checkLoginStatus();
     final Uri? initialLink = await getInitialUri();
 
     if (initialLink != null) {
       // Handle the deep link
-      _handleDeepLink(initialLink, isLoggedIn);
+      _handleDeepLink(initialLink);
     } else {
-      // No deep link, navigate to home or login based on login status
-      _navigateToInitialPage(isLoggedIn);
+      // No deep link, navigate to home
+      _navigateToHomePage();
     }
   }
 
-  Future<bool> _checkLoginStatus() async {
+  Future<void> _checkLoginStatus() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String? user = prefs.getString('user');
     if (user != null) {
@@ -51,31 +51,23 @@ class _SplashPageState extends State<SplashPage> {
       } else {
         myGlobalController.userFavorites.value = [];
       }
-
-      return true;
-    } else {
-      return false;
     }
   }
 
-  void _handleDeepLink(Uri link, bool isLoggedIn) {
+  void _handleDeepLink(Uri link) {
     if (link.pathSegments.contains('property_detail')) {
       final String propertyId = link.pathSegments.last;
       Get.offNamed('/property_detail/$propertyId');
     } else if(link.pathSegments.contains('advertiser_data')){
       final String email = link.pathSegments.last;
       Get.offNamed('/advertiser_data/$email');
-    }else {
-      _navigateToInitialPage(isLoggedIn);
+    } else {
+      _navigateToHomePage();
     }
   }
 
-  void _navigateToInitialPage(bool isLoggedIn) {
-    if (isLoggedIn) {
-      Get.off(Home());
-    } else {
-      Get.off(LoginPage());
-    }
+  void _navigateToHomePage() {
+    Get.off(Home());
   }
 
   @override

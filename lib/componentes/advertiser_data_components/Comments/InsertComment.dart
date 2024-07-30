@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/advertiser_data_components/Comments/CommentsController.dart';
 import 'package:space_imoveis/componentes/global_components/rating.dart';
+import 'package:space_imoveis/componentes/global_components/snack_bar.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 
 class InsertComment extends StatelessWidget {
@@ -24,7 +25,7 @@ class InsertComment extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 8,
-                backgroundImage: cc.myGlobalController.userInfo['profile'] != null &&
+                backgroundImage: cc.myGlobalController.userInfo != null && cc.myGlobalController.userInfo['profile'] != null &&
                       cc.myGlobalController.userInfo['profile']['url'] != ''
                   ? NetworkImage(
                       cc.myGlobalController.userInfo['profile']['url'],
@@ -35,7 +36,7 @@ class InsertComment extends StatelessWidget {
               ),
               SizedBox(width: 4),
               Text(
-                cc.myGlobalController.userInfo['type'] == 'realstate' ? cc.myGlobalController.userInfo['company_name'] : cc.myGlobalController.userInfo['name'],
+                cc.myGlobalController.userInfo == null ? '' :  cc.myGlobalController.userInfo['type'] == 'realstate' ? cc.myGlobalController.userInfo['company_name'] : cc.myGlobalController.userInfo['name'],
                 style: TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
               ),
             ],
@@ -91,7 +92,11 @@ class InsertComment extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          cc.postComment();
+                          if(cc.myGlobalController.userInfo == null){
+                            mySnackBar('Realize o login para comentar', true);
+                          }else{
+                            cc.postComment();
+                          }
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),

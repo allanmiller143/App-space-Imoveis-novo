@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:space_imoveis/pages/Chat/ChatPages/Conversation/ConversationController.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
-import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
 class SoundRecorder {
@@ -20,6 +19,7 @@ class SoundRecorder {
 
     final status = await Permission.microphone.request();
     if (status != PermissionStatus.granted) {
+      Get.offAllNamed('/home');
       throw RecordingPermissionException('microphone permission not granted');
     }
     await _audioRecorder!.openRecorder();

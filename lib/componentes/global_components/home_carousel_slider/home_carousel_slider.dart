@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:space_imoveis/componentes/global_components/Dialogs/AlertDialog/alert_dialog.dart';
+import 'package:space_imoveis/componentes/global_components/Dialogs/informationDialog/information_dialog.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/card.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/controller.dart';
 import 'package:flutter/material.dart';
@@ -160,8 +162,33 @@ class PropertyList extends StatelessWidget {
                   onTap: () {
                     if(controller.myGlobalController.userInfo != null && controller.myGlobalController.userInfo['type'] != 'client'){
                       Get.toNamed('insert_property');
-                    }else{
-                      mySnackBar('Para anunciar imóvel, cadastre-se', true);
+                    }else if(controller.myGlobalController.userInfo != null && controller.myGlobalController.userInfo['type'] == 'client'){
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return MyAlertDialog(
+                            onSend: (){
+                              Get.toNamed('/who_are_you_page');
+                            },
+                            title: 'Ação bloqueada',
+                            subtitle: 'Para ter acesso a essa funcionalidade, você precisa de uma conta de Proprietário, corretor ou imobiliária',
+                          );
+                        },
+                      );
+                    }
+                    else{
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return MyAlertDialog(
+                            onSend: (){
+                              Get.toNamed('/login');
+                            },
+                            title: 'Login necessário',
+                            subtitle: 'Para ter acesso a essa funcionalidade, realize o login ou cadastre-se.',
+                          );
+                        },
+                      );
                     }
                   },
                   child: Container(

@@ -26,18 +26,24 @@ class Networks extends StatelessWidget {
 
       var response = await get('find/${userData['email']}');
       if(response['status'] == 200 || response['status'] == 201){ // dar um find para ver se a conta ja existe, se sim, ent faz login
+      print('login');
         if(response['data']['type'] == 'client'){
           var tokenData = {
             'googleToken': result['idToken'],
           };
           var loginWithGoogle = await post('google', tokenData);
           if(loginWithGoogle['status'] == 200 || loginWithGoogle['status'] == 201){
+            
             var favoritesResponse = await get('favorites/${loginWithGoogle['body']['user']['email']}',token: loginWithGoogle['body']['token']);
             if(favoritesResponse['status'] == 200 || favoritesResponse['status'] == 201){
+              print('aqsdfsdui');
               MyGlobalController myGlobalController = Get.find();
-              myGlobalController.userInfo = loginWithGoogle['body']['user'];
-              myGlobalController.token = loginWithGoogle['body']['token'];
-              myGlobalController.userFavorites = favoritesResponse['data'];
+               myGlobalController.userInfo = loginWithGoogle['body']['user'];
+               myGlobalController.token = loginWithGoogle['body']['token'];
+               if(favoritesResponse['data'].length > 0){
+                myGlobalController.userFavorites = favoritesResponse['data'];
+               }
+               
               final SharedPreferences prefs = await SharedPreferences.getInstance();
               await prefs.setString('user', jsonEncode(loginWithGoogle['body']['user']));
               await prefs.setString('token', loginWithGoogle['body']['token']);
@@ -60,6 +66,7 @@ class Networks extends StatelessWidget {
 
       }else{
         var response = await post('clients', userData);
+        print('criação de conta com o google');
         if(response['status'] == 200 || response['status'] == 201){
           var tokenData = {
             'googleToken': result['idToken'],
@@ -81,11 +88,13 @@ class Networks extends StatelessWidget {
             Get.back();
             mySnackBar('Ocorreu um erro inesperado', false);
           }
+        }else{
+          print('deu ruim');
         }
       }
     } catch (e) {
       Get.back();
-      mySnackBar('Ocorreu um erro inesperado jnfgiofgoif', false);
+      mySnackBar('Ocorreu um erro inesperado', false);
     }
   }
 

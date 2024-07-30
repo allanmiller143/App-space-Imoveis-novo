@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:space_imoveis/componentes/global_components/Dialogs/AlertDialog/alert_dialog.dart';
+import 'package:space_imoveis/componentes/global_components/snack_bar.dart';
+import 'package:space_imoveis/config/controllers/global_controller.dart';
 
 
 class OpenNewChat extends StatelessWidget {
@@ -15,8 +18,25 @@ class OpenNewChat extends StatelessWidget {
     return 
         GestureDetector(
           onTap: () async{
-            print('email: ${advertiserData['email']}');
-            Get.toNamed('/chat_conversation', arguments: [advertiserData]);
+            MyGlobalController myGlobalController = Get.find();
+            if(myGlobalController.userInfo != null){
+              Get.toNamed('/chat_conversation', arguments: [advertiserData]); 
+            }
+              else{
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return MyAlertDialog(
+                      onSend: (){
+                        Get.toNamed('/login');
+                      },
+                      title: 'Login necessário',
+                      subtitle: 'Para ter acesso a essa funcionalidade, realize o login ou cadastre-se.',
+                    );
+                  },
+                );
+              }
+           
 
           },
           child: Row(

@@ -14,7 +14,7 @@ class MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return 
-      myGlobalController.userInfo['type'] != 'client' ? Row(
+      (myGlobalController.userInfo != null && myGlobalController.userInfo['type'] != 'client'  ) ? Row(
         children: [
           Expanded(
             child: Text(

@@ -5,6 +5,7 @@ import 'package:space_imoveis/componentes/global_components/app_bar.dart'; // Ce
 import 'package:space_imoveis/componentes/global_components/drawer.dart';
 import 'package:space_imoveis/componentes/global_components/home_banner_sliders.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/home_carousel_slider.dart';
+import 'package:space_imoveis/componentes/home/LoginBanner.dart';
 import 'package:space_imoveis/componentes/home/filterCards.dart';
 import 'package:space_imoveis/componentes/home/realtorRealStates24hButton.dart';
 import 'package:space_imoveis/pages/AppPages/home/home_controller.dart';
@@ -53,11 +54,17 @@ class Home extends StatelessWidget {
                                   Get.toNamed('/realtor_real_state_24_hours');
                                 },
                               ),
+                              
                               SizedBox(height: 10),                              
                               FiltersCards(),
                               SizedBox(height: 10),
                               PropertyList(),
                               SizedBox(height: 10),
+                              controller.myGlobalController.userInfo == null ? SignUpBanner() : SizedBox(),
+                              
+                              SizedBox(height: 10),
+
+
                               PropertyGrid(title: 'Encontre o imóvel ideal',),
                             ],
                           ),

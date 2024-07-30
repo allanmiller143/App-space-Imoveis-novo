@@ -32,14 +32,14 @@ class RatingSummaryWidget extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               color: const Color.fromARGB(255, 255, 255, 255),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color.fromARGB(255, 221, 221, 221).withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: Offset(0, 1), // changes position of shadow
-                ),
-              ],
+              // boxShadow: [
+              //   BoxShadow(
+              //     color: const Color.fromARGB(255, 221, 221, 221).withOpacity(0.5),
+              //     spreadRadius: 1,
+              //     blurRadius: 2,
+              //     offset: Offset(0, 1), // changes position of shadow
+              //   ),
+              // ],
             ),
             child: Column(
               children: [

@@ -57,7 +57,9 @@ class PropertyDetail extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         SizedBox(height: 15),
+                                        
                                         OpenNewChat(advertiserData: controller.property['seller'],),
+
                                         SizedBox(height: 5),
                                         AdvertiserMiniCard(
                                           onPressed: (){

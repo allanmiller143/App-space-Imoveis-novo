@@ -50,7 +50,6 @@ class FiltersCards extends StatelessWidget {
                 onTap: () {
                   print('casas');
                   Get.toNamed('all_highligthed_property', arguments: ['Casa']);
-
                 },
                 child: FiltersCard(
                   filter: 'Casas',

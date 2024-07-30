@@ -68,7 +68,7 @@ class ConversationPage extends StatelessWidget {
                                   itemCount: controller.chat_socket_controller.messages.length,
                                   itemBuilder: (context, index) {
                                     final message = controller.chat_socket_controller.messages[index];
-                                    final picture = (message['senderProfile']['url'] != null && message['senderProfile']['url'] != '')
+                                    final picture = (message['senderProfile'] != null && message['senderProfile']['url'] != null && message['senderProfile']['url'] != '')
                                         ? message['senderProfile']['url']
                                         : '';
                                     final sender = message['sender'] == controller.myGlobalController.userInfo['email'];

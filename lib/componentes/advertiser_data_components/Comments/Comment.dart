@@ -50,7 +50,7 @@ class Comment extends StatelessWidget {
               ),
               Spacer(),
 
-              mgc.userInfo['email'] == commnentData['sender']['email'] ?
+              mgc.userInfo != null && mgc.userInfo['email'] == commnentData['sender']['email'] ?
               GestureDetector(
                 onTap: () {
                   cc.deleteComment(commnentData['id']);

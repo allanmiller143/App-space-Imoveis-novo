@@ -12,4 +12,10 @@ class MyGlobalController extends GetxController {
   var color2 = Color.fromARGB(13, 52, 52, 52);
   var color3 = Color.fromARGB(255, 44, 87, 109);
 
+  void clearUserData() {
+    userInfo = null;
+    token = '';
+    userFavorites.clear();
+  }
+
 }

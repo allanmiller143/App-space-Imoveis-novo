@@ -19,7 +19,10 @@ class MyDrawer extends StatelessWidget {
 
   Future<void> logout() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
+    MyGlobalController myGlobalController = Get.find();
+
     await prefs.clear();
+    myGlobalController.clearUserData();
     Get.offAllNamed('/'); // Navega para a tela de login e remove todas as outras da pilha
 
   }
@@ -66,7 +69,7 @@ class MyDrawer extends StatelessWidget {
         
             ),
             accountName:  Text(
-              ((myGlobalController.userInfo != null && myGlobalController.userInfo['type'] != 'client')) ?
+              (myGlobalController.userInfo != null ) ?
               myGlobalController.userInfo['type'] == 'realstate' ? myGlobalController.userInfo['company_name'] : myGlobalController.userInfo['name']: '',
               style: const TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
@@ -75,7 +78,7 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             accountEmail:  Text(
-              ((myGlobalController.userInfo != null && myGlobalController.userInfo['type'] != 'client')) ?
+              (myGlobalController.userInfo != null ) ?
               myGlobalController.userInfo['email']:
               '',
               style: const TextStyle(
@@ -86,7 +89,7 @@ class MyDrawer extends StatelessWidget {
             ),
             currentAccountPicture : 
             CircleAvatar(
-              backgroundImage: myGlobalController.userInfo['profile'] != null &&
+              backgroundImage: myGlobalController.userInfo != null && myGlobalController.userInfo['profile'] != null &&
                       myGlobalController.userInfo['profile']['url'] != ''
                   ? NetworkImage(
                       myGlobalController.userInfo['profile']['url'],
@@ -112,7 +115,36 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Get.toNamed('/main_dash');
+              if ( myGlobalController.userInfo != null && myGlobalController.userInfo['type'] != 'client') {
+                Get.toNamed('/main_dash');
+              }else if(myGlobalController.userInfo != null && myGlobalController.userInfo['type'] == 'client'){
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return MyAlertDialog(
+                      onSend: (){
+                        Get.toNamed('/who_are_you_page');
+                      },
+                      title: 'Ação bloqueada',
+                      subtitle: 'Para ter acesso a essa funcionalidade, você precisa de uma conta de Proprietário, corretor ou imobiliária',
+                    );
+                  },
+                );
+              }
+              else{
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return MyAlertDialog(
+                      onSend: (){
+                        Get.toNamed('/login');
+                      },
+                      title: 'Login necessário',
+                      subtitle: 'Para ter acesso a essa funcionalidade, realize o login ou cadastre-se.',
+                    );
+                  },
+                );
+              }
             },
           ),          
           // ListTile(
@@ -154,7 +186,36 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Get.toNamed('/edit_profile_data');
+              if ( myGlobalController.userInfo != null && myGlobalController.userInfo['type'] != 'client') {
+                Get.toNamed('/edit_profile_data');
+              }else if(myGlobalController.userInfo != null && myGlobalController.userInfo['type'] == 'client'){
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return MyAlertDialog(
+                      onSend: (){
+                        Get.toNamed('/who_are_you_page');
+                      },
+                      title: 'Ação bloqueada',
+                      subtitle: 'Para ter acesso a essa funcionalidade, você precisa de uma conta de Proprietário, corretor ou imobiliária',
+                    );
+                  },
+                );
+              }
+              else{
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return MyAlertDialog(
+                      onSend: (){
+                        Get.toNamed('/login');
+                      },
+                      title: 'Login necessário',
+                      subtitle: 'Para ter acesso a essa funcionalidade, realize o login ou cadastre-se.',
+                    );
+                  },
+                );
+              }
             },
           ),
           ListTile(
@@ -168,20 +229,53 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-                showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return MyAlertDialog(
-                    title: 'Tem certeza que deseja excluir sua conta?',
-                    subtitle: 'Ao excluir sua conta, todos os seus dados serão excluídos.\nIncluindo, dados pessoais, imoveis cadastrados e imagens.\n\nTem certeza de que deseja continuar?',
-                    onSend: () {
-                      deleteAccount();},
+
+                if(myGlobalController.userInfo != null){
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return MyAlertDialog(
+                        title: 'Tem certeza que deseja excluir sua conta?',
+                        subtitle: 'Ao excluir sua conta, todos os seus dados serão excluídos.\nIncluindo, dados pessoais, imoveis cadastrados e imagens.\n\nTem certeza de que deseja continuar?',
+                        onSend: () {
+                          deleteAccount();},
+                      );
+                    },
                   );
-                },
-              );
+                }else if(myGlobalController.userInfo != null && myGlobalController.userInfo['type'] == 'client'){
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return MyAlertDialog(
+                      onSend: (){
+                        Get.toNamed('/who_are_you_page');
+                      },
+                      title: 'Ação bloqueada',
+                      subtitle: 'Para ter acesso a essa funcionalidade, você precisa de uma conta de Proprietário, corretor ou imobiliária',
+                    );
+                  },
+                );
+              }
+              else{
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return MyAlertDialog(
+                      onSend: (){
+                        Get.toNamed('/login');
+                      },
+                      title: 'Login necessário',
+                      subtitle: 'Para ter acesso a essa funcionalidade, realize o login ou cadastre-se.',
+                    );
+                  },
+                );
+              }
+
+
             },
           ),
 
+          myGlobalController.userInfo != null ?
           ListTile(
             leading: Icon(Icons.logout,color: myGlobalController.color,),
             title: const  Text(
@@ -195,6 +289,21 @@ class MyDrawer extends StatelessWidget {
             onTap: () async {
               await signOut();
               await logout();
+            }
+          )
+          :
+          ListTile(
+            leading: Icon(Icons.login_rounded,color: myGlobalController.color,),
+            title: const  Text(
+              'Fazer cadastro',
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 13,
+                fontWeight: FontWeight.w300
+              ),
+            ),
+            onTap: () async {
+              Get.toNamed('/login');
             }
           ),
         ],

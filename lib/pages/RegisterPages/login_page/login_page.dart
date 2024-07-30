@@ -124,15 +124,23 @@ class LoginPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-
                               NoAccount(),
-
-
-                         
                             ],
-                          )
+                          ),
+                          Positioned(
+                            top: 50,
+                            left: 10,
+                            child: IconButton(
+                              icon: Icon(Icons.arrow_circle_left, size: 40, color: Color.fromARGB(255, 255, 255, 255)),
+                              onPressed: () {
+                                Get.back();
+                              },
+                            ),
+                          ),
                         ],
+                        
                       ),
+                      
                     ),
 
                   );
