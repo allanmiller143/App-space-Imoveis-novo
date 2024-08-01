@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:space_imoveis/config/controllers/Chat_Socket_Controller.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 import 'package:space_imoveis/pages/Chat/ChatPages/Conversation/ConversationController.dart';
 import 'dart:async';
@@ -92,6 +93,7 @@ void sendImg(List<XFile> listImgs) async {
   String? chatId = prefs.getString('chatId');
   MyGlobalController myGlobalController = Get.find();
   String email = myGlobalController.userInfo['email'];
+  Chat_Socket_Controller chat_socket_controller = Get.find();
 
   for (var img in listImgs) {
     // Convert XFile to File
@@ -116,7 +118,28 @@ void sendImg(List<XFile> listImgs) async {
     };
 
     // Emit socket event with the Base64 encoded file bytes
+
+    
+
+    
+
+    chat_socket_controller.messages.insert(0, {
+      'email': email,
+      'chatId': chatId,
+      'file': base64File, // Use Base64 encoded string
+      'text': 'teste',
+      'type': 'image',
+      'fileName': img.name,
+      'contentType': 'image/jpeg', // Ensure this matches the actual content type
+      'platform' : 'mobile',
+      'isLoading' : true,
+      'id' : 1,
+      'sender': myGlobalController.userInfo['email'],
+      'createdAt': DateTime.now().toIso8601String()
+    });
     socket.emit('upload', data);
+    
+
   }
 }
 
@@ -147,13 +170,14 @@ void sendFile(RxList<PlatformFile> selectedFiles) async {
       };
 
       socket.emit('upload', data);
+
+
     }
   }
 
 
 void sendAudio() async {
   ConversationController conversationController = Get.find();
-
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? chatId = prefs.getString('chatId');
   MyGlobalController myGlobalController = Get.find();
@@ -163,8 +187,7 @@ void sendAudio() async {
 
   // Lendo o arquivo de áudio
   File audioFile = File(pathToReadAudio);
-  Uint8List audioBytes = await audioFile.readAsBytes();
-
+  List<int> audioBytes = await audioFile.readAsBytes();
   // Convertendo o áudio para ArrayBuffer (Uint8List é basicamente um ArrayBuffer em Dart)
   String audioBase64 = base64Encode(audioBytes);
 
@@ -180,9 +203,10 @@ void sendAudio() async {
     
   };
 
-  print('to dando o emmit');
+ 
 
   socket.emit('upload', data);
+  
 }
 
 
@@ -200,7 +224,6 @@ Future<Map<String, dynamic>> postChat(String route, var data, {String token = ''
 
     // Decodificar o corpo da resposta
     Map<String, dynamic> responseBody = json.decode(response.body) as Map<String, dynamic>;
-    
     return {
       'status': response.statusCode,
       'body': responseBody,

@@ -31,9 +31,10 @@ class Chat_Socket_Controller extends GetxController {
     });
 
     socket.on('message', (data) {
-        messages.insert(0, data);
-        messagesSize.value = messages.length;
-        print(messages.length);
+      print('message: $data');
+      messages.removeWhere((message) => message['id'] == 1);
+      messages.insert(0, data);
+
     });
   }
 

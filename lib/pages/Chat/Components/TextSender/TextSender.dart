@@ -115,9 +115,9 @@ class ChatTextSender extends StatelessWidget {
                   }
                 },
                 child: Container(
-                  width: 22,
-                  height: 22,
-                  margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                  width: 30,
+                  height: 30,
+                  margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
                   decoration: BoxDecoration(
                     color: controller.myGlobalController.color3,
                     borderRadius: BorderRadius.circular(
@@ -132,7 +132,7 @@ class ChatTextSender extends StatelessWidget {
                   ),
                 ),
               )
-              )
+              ),
 
               
             //PlayButton()

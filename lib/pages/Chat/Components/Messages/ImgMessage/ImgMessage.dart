@@ -156,7 +156,14 @@ class ChatImgMessageSenderWidget extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(5),
-                          child: Image.network(
+                          child: 
+                          imgUrl == "" ? Container(
+                            width: 150,
+                            height: 160,
+                            color: Colors.grey[300],
+                            child: Center(child: CircularProgressIndicator()),
+                          ) :
+                          Image.network(
                             imgUrl,
                             width: 150,
                             height: 160,

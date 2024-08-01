@@ -68,7 +68,10 @@ class ImagePickerBottomSheet extends StatelessWidget {
               SizedBox(
                 width: Get.width * 0.3,
                 child: MyButtom(
-                  onPressed: controller.sendImg,
+                  onPressed: (){
+                    Navigator.pop(context);
+                    controller.sendImg();
+                  },
                   label: "Enviar",
                 ),
               ),

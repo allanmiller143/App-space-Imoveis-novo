@@ -73,7 +73,7 @@ class ConversationPage extends StatelessWidget {
                                         : '';
                                     final sender = message['sender'] == controller.myGlobalController.userInfo['email'];
                                     final messageType = message['type'];
-                                    final messageUrl = message['url'];
+                                    final messageUrl = message['url'] ?? '';
                                     var time = message['createdAt'];
 
                                     // Convertendo a variável 'time' para hora e minuto no fuso horário do Brasil

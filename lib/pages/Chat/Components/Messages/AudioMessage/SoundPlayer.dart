@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:space_imoveis/pages/Chat/ChatPages/Conversation/ConversationController.dart';
 
 
-final pathToReadAudio = 'audio.aac';
 class SoundPlayer {
   FlutterSoundPlayer?_audioPlayer;
   RxBool isPlaying = false.obs;
@@ -23,6 +22,8 @@ class SoundPlayer {
 
 
   Future _play(VoidCallback whenFinished) async {
+    ConversationController conversationController = Get.find();
+    String pathToReadAudio = conversationController.recorder.pathToSaveAudio;
     await _audioPlayer!.startPlayer(
       fromURI: pathToReadAudio,
       whenFinished: whenFinished

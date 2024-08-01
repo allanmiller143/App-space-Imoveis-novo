@@ -6,6 +6,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 import 'package:path_provider/path_provider.dart';
 
+
+
 class SoundRecorder {
   FlutterSoundRecorder? _audioRecorder;
   bool isRecorderInited = false;
@@ -99,10 +101,11 @@ Widget AudioButton() {
               color: conversationController.recorder.isRecording.value
                   ? Colors.red
                   : Colors.white,
+              size: 30,
             ),
             conversationController.recorder.isRecording.value
                 ? Padding(
-                    padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(5, 0, 8, 0),
                     child: GestureDetector(
                       onTap: () async {
                         await conversationController.sendAudio();
@@ -111,7 +114,7 @@ Widget AudioButton() {
                       child: Icon(
                         Icons.send,
                         color: Colors.white,
-                        size: 18,
+                        size: 25,
                       ),
                     ),
                   )
