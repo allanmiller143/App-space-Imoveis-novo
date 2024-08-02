@@ -74,7 +74,7 @@ login(BuildContext context) async {
               final SharedPreferences prefs = await SharedPreferences.getInstance();
               await prefs.setString('user', jsonEncode(userData['data']));
               Get.back();
-              Get.toNamed('/home');
+              Get.offAllNamed('/home');
             } else {
               Get.back();
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Ocorreu um erro inesperado'),backgroundColor: Color.fromARGB(155, 250, 0, 0),));

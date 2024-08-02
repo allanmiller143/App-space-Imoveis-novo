@@ -51,7 +51,7 @@ class CompleteSignUpPageBioController extends GetxController {
             final SharedPreferences prefs = await SharedPreferences.getInstance();
             await prefs.setString('user', jsonEncode(userData['data']));
             Get.back();
-            Get.toNamed('/home');
+            Get.offAllNamed('/home');
 
           } else {
             Get.back();

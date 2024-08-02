@@ -161,7 +161,9 @@ class ChatImgMessageSenderWidget extends StatelessWidget {
                             width: 150,
                             height: 160,
                             color: Colors.grey[300],
-                            child: Center(child: CircularProgressIndicator()),
+                            child: Center(child: CircularProgressIndicator(
+                              color: Colors.grey[600],
+                            )),
                           ) :
                           Image.network(
                             imgUrl,
