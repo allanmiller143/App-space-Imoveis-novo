@@ -1,12 +1,10 @@
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/global_components/Dialogs/AlertDialog/alert_dialog.dart';
-import 'package:space_imoveis/componentes/global_components/Dialogs/informationDialog/information_dialog.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/card.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/loading_card.dart';
-import 'package:space_imoveis/componentes/global_components/snack_bar.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';
 
 

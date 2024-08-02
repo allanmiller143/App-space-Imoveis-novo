@@ -26,7 +26,7 @@ class HomeController extends GetxController {
     print(user);
 
     if(user != null){
-      myGlobalController.userInfo = jsonDecode(user!);
+      myGlobalController.userInfo = jsonDecode(user);
       myGlobalController.token = token!;
     }
 
@@ -47,8 +47,6 @@ class HomeController extends GetxController {
   init() async {
     return true;
   }
-
-
 
 
 }

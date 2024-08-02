@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:space_imoveis/pages/Chat/Components/Messages/ImgMessage/ImagePreviewDialog.dart';
 
 class Avatar extends StatelessWidget {

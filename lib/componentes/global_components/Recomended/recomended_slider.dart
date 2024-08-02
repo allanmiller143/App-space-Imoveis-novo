@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:space_imoveis/componentes/global_components/Recomended/recomended_slider_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/card.dart';
 import 'package:space_imoveis/componentes/global_components/home_carousel_slider/loading_card.dart';
 import 'package:space_imoveis/config/controllers/global_controller.dart';

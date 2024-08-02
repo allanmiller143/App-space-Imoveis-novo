@@ -4,7 +4,6 @@ import 'package:space_imoveis/pages/Chat/ChatPages/Conversation/ConversationCont
 import 'package:space_imoveis/pages/Chat/Components/Messages/ImgMessage/ImageModal.dart';
 import 'package:space_imoveis/pages/Chat/Components/Messages/AudioMessage/AudioSender.dart';
 import 'package:space_imoveis/pages/Chat/Components/TextSender/FileSender.dart';
-import 'package:space_imoveis/pages/Chat/Components/Messages/AudioMessage/SoundPlayer.dart';
 
 class ChatTextSender extends StatelessWidget {
   ChatTextSender({Key? key}) : super(key: key);

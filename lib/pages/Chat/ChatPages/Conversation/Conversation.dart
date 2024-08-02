@@ -102,6 +102,7 @@ class ConversationPage extends StatelessWidget {
                                         return ChatFileMessageReceiverWidget(fileUrl: messageUrl,horaMinuto: formattedTime,url: picture,fileName: message['fileName']);  
                                       }
                                     }
+                                    return null;
                                   },
                                 )
                               : Container(),
